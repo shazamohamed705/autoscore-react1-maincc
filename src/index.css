@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200..800&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+:root {
+  --mainColor: #ff8f4e;
+  --secondColor: #7f7f7f;
+  --thirdColor: #141414;
+  --forthColor: #98989a;
+}
+.mainColor {
+  color: var(--mainColor);
+}
+.secondColor {
+  color: var(--forthColor);
+}
+.mainBg {
+  background-color: var(--mainColor);
+}
+.secondBg {
+  background-color: var(--thirdColor);
+}
+.mainBorder {
+  border-color: var(--secondColor);
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #000;
+  margin: 0;
+  font-family: "Changa", sans-serif;
+  direction: rtl;
+}
+
+.dark body {
+  background-color: #121222;
+  color: #fff;
+}
+
+.bg-cover-center {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home {
+  background-image: url("/src/assets/image 23.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 200px center; 
+  min-height: 95vh;
+}
+
+
+
+
+.choose {
+  background-image: url("/src/assets/17014 1.png");
+  background-color: var(--mainColor);
+  @apply bg-cover-center;
+}
+.spesial {
+  background-image: url("/src/assets//STUDIO SM 2190-04 1.png");
+  background-color: var(--secondColor);
+  @apply bg-cover-center;
+}
+.help {
+  background-image: url("/src/assets/14988 1.png");
+  background-color: #0454f2;
+  @apply bg-cover-center;
+}
+
+/* glopal slider style*/
+
+.slick-dots {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.slick-dots li button::before {
+  font-size: 20px !important;
+  color: #ccc !important;
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button::before {
+  color: var(--mainColor) !important;
+  font-size: 25px !important;
+  width: 8px !important;
+}
+
+/* service slider in home */
+.service .slick-arrow.slick-next {
+  display: none !important;
+}
+
+.service .slick-prev {
+  position: absolute;
+  top: 60%;
+  left: 3%;
+  background-color: var(--mainColor);
+  padding: 1.9rem 3.5rem;
+  border-radius: 12px;
+  z-index: 40;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+
+.service .slick-prev:before {
+  font-size: x-large;
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.service .slick-prev:hover {
+  background-color: var(--mainColor);
+}
+
+@media (max-width: 1024px) {
+  .service .slick-prev {
+    top: 96%;
+    left: 8%;
+    padding: 1.6rem 2.5rem !important;
+    transform: translatex(-50%);
+  }
+}
+
+/* say slider in home */
+
+.say .slick-prev,
+.say .slick-next {
+  position: absolute;
+  top: -22% !important;
+  width: 50px !important;
+  height: 50px !important;
+  background-color: var(--mainColor) !important;
+  border-radius: 50% !important;
+  transition: all 0.5s;
+}
+
+.say .slick-next {
+  left: 105px !important;
+}
+.slick-prev {
+  left: 30px !important;
+}
+
+.say .slick-prev:before,
+.say .slick-next:before {
+  color: #fff !important;
+  font-family: "Changa", sans-serif !important;
+  font-size: 25px !important;
+  transition: color 0.5s;
+}
+
+.say .slick-prev:hover,
+.say .slick-next:hover {
+  background-color: #fff !important;
+}
+
+.say .slick-prev:hover:before,
+.say .slick-next:hover:before {
+  color: #000 !important;
+}
+
+/* register and login */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 160vh !important;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+/* أزرار السلايدر للأجهزة الصغيرة والمتوسطة */
+@media (max-width: 768px) {
+  .say .slick-prev,
+  .say .slick-next {
+    top: 113% !important; /* تتحرك تحت السلايدر */
+  }
+
+  .say .slick-prev {
+    left: 30px !important;
+  }
+
+  .say .slick-next {
+    left: 105px !important;
+  }
+}
+
+/* للأجهزة الأكبر (أجهزة لابتوب وما فوق) */
+@media (min-width: 769px) {
+  .say .slick-prev,
+  .say .slick-next {
+    top: 50% !important; /* في منتصف السلايدر عموديًا */
+    transform: translateY(-50%);
+  }
+
+  .say .slick-prev {
+    left: -25px; /* على حسب التصميم */
+  }
+
+  .say .slick-next {
+    right: -25px; /* على حسب التصميم */
+    left: auto;
+  }
+}
+
