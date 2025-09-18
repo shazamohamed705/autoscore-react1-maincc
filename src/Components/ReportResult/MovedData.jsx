@@ -399,17 +399,17 @@ function MoveData() {
                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
                 
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* صورة السيارة */}
-                    <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
+                    <div className="flex flex-col items-center justify-center p-4 md:p-6 shadow rounded-lg">
                       {item.carInformation1.images.map((img, i) => (
-                        <img key={i} src={img} alt={`car ${i}`} />
+                        <img key={i} src={img} alt={`car ${i}`} className="w-full h-auto max-h-72 md:max-h-none object-contain" />
                       ))}
                     </div>
 
                     {/* نصوص الوصف */}
-                    <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-                      <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+                    <div className="p-3 md:p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed">
                         {item.descriptionPoints3.map((point, index) => (
                           <li key={index}>{point}</li>
                         ))}
@@ -418,7 +418,7 @@ function MoveData() {
                   </div>
 
                   {/* Filter Buttons */}
-                  <div className="flex flex-wrap gap-3 mt-6">
+                  <div className="flex flex-wrap gap-2 md:gap-3 mt-6">
                       {[
                         { key: "powerTrainAll", label: "جميع نقاط الفحص" },
                         { key: "batterySystem", label: "البطارية الرئيسية" },
@@ -431,7 +431,7 @@ function MoveData() {
                         <button
                           key={btn.key}
                            onClick={() => setSelectedCategory(btn.key)}
-                           className={`px-4 py-2 rounded transition-colors duration-200 ${
+                           className={`px-3 py-1.5 md:px-4 md:py-2 rounded text-sm md:text-base transition-colors duration-200 ${
                              selectedCategory === btn.key
                               ? "bg-blue-500 text-white dark:bg-blue-600"
                               : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -452,7 +452,7 @@ function MoveData() {
                         ];
 
                         return (
-                          <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+                          <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-6 md:gap-y-10">
                             {cols.map((col, colIdx) => (
                               <div key={colIdx} className="space-y-6">
                                 {col.map((row, i) => {
@@ -481,13 +481,13 @@ function MoveData() {
                                               )}
                                             </button>
                                           )}
-                                          <span className="text-black dark:text-white text-base font-medium">
+                                          <span className="text-black dark:text-white text-sm md:text-base font-medium">
                                             {row.label}
                                           </span>
                                         </div>
 
                                         <span
-                                          className={`font-bold text-base ${
+                                          className={`font-bold text-sm md:text-base ${
                                             stat === "✅" || stat === "✔️"
                                               ? "text-green-500"
                                               : stat === "⚠️"
@@ -512,7 +512,7 @@ function MoveData() {
                                           <img
                                             src={row.gallery[0].src}
                                             alt={row.label}
-                                            className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+                                            className="w-24 h-20 md:w-32 md:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
                                             onClick={() =>
                                               setOpenGallery({ images: row.gallery, start: 0 }) 
                                             }

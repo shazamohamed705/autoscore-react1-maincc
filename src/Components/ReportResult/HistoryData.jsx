@@ -303,7 +303,7 @@ const DataSection = ({ data, title }) => {
   }, [data]);
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {sections.map((section, idx) => (
         <div key={idx} className="border p-2">
           <div className="font-bold text-gray-700 dark:text-gray-200 mb-2">
@@ -312,10 +312,10 @@ const DataSection = ({ data, title }) => {
           <div className="space-y-1">
             {section.items.map((row, i) => (
               <div key={i} className="border-b py-2 px-2 text-sm">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="w-32 font-medium">{row.label}</span>
-                  <span className="w-32 text-gray-600">{row.value}</span>
-                <span className={`w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1 gap-1 sm:gap-0">
+                  <span className="w-full sm:w-40 font-medium">{row.label}</span>
+                  <span className="w-full sm:flex-1 text-gray-600 break-words">{row.value}</span>
+                <span className={`w-full sm:w-10 text-right sm:text-left font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
                   {row.status || ""}
                 </span>
                 </div>
@@ -356,12 +356,12 @@ const FilterButtons = ({ activeFilter, setActiveFilter }) => {
   ];
 
   return (
-    <div className="flex gap-2 mb-4">
+    <div className="flex gap-2 mb-4 flex-wrap">
       {filters.map(({ key, label }) => (
         <button
           key={key}
           onClick={() => setActiveFilter(key)}
-          className={`px-4 py-2 rounded transition-colors duration-200 ${
+          className={`px-4 py-2 rounded transition-colors duration-200 w-full sm:w-auto ${
             activeFilter === key
               ? "bg-blue-500 text-white dark:bg-blue-600"
               : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -605,7 +605,7 @@ const HistoryComponent = () => {
                   {item.type === "details" ? (
                     <div className="space-y-10">
                       {/* Information boxes */}
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Car image */}
                         <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded-lg">
                           <img

@@ -661,7 +661,7 @@ const ElectricalSystemsComponent = () => {
 
   return (
     <div id="المجموعة-الكهربائية">
-      <div className="space-y-5 mt-6">
+      <div className="space-y-4 sm:space-y-5 mt-4 sm:mt-6">
         {electricalData.itemis.map((item, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (
@@ -674,7 +674,7 @@ const ElectricalSystemsComponent = () => {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* صورة السيارة */}
                     <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
                       <img
@@ -719,7 +719,7 @@ const ElectricalSystemsComponent = () => {
                     const cols = [src.slice(0, mid), src.slice(mid)];
 
                     return (
-                      <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+                      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-10">
                         {cols.map((col, colIdx) => (
                           <div key={colIdx} className="space-y-6">
                               {col.map((row, i) => renderPoint(row, colIdx, i))}

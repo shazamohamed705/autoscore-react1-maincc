@@ -506,10 +506,10 @@ function Exoskeleton() {
     }
     
     return (
-      <div key={`${colIdx}-${i}`} className="pb-3">
+      <div key={`${colIdx}-${i}`} className="pb-3 sm:pb-4">
         {/* Main row */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3 relative">
+        <div className="flex justify-between items-start sm:items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 relative flex-1 min-w-0">
             {hasInfo && (
               <button
                 onClick={(e) => {
@@ -520,25 +520,25 @@ function Exoskeleton() {
                       : `${colIdx}-${i}`
                   );
                 }}
-                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 text-base relative transition-colors"
+                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 text-sm sm:text-base relative transition-colors flex-shrink-0"
                 aria-label="معلومات إضافية"
               >
-                <FaInfoCircle size={20} />
+                <FaInfoCircle size={16} className="sm:w-5 sm:h-5" />
                 {openInfoIndex === `${colIdx}-${i}` && (
-                  <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
+                  <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-2 sm:px-3 py-2 shadow-lg w-48 sm:w-64 z-10">
                     {row.info}
                   </div>
                 )}
               </button>
             )}
-            <span className="text-black dark:text-white text-base font-medium">
+            <span className="text-black dark:text-white text-sm sm:text-base font-medium truncate">
               {row.label}
             </span>
           </div>
 
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-end flex-shrink-0">
             <span
-              className={`font-bold text-base ${
+              className={`font-bold text-sm sm:text-base ${
                 stat === "✅" || stat === "✔️"
                   ? "text-green-500"
                   : stat === "⚠️"
@@ -558,7 +558,7 @@ function Exoskeleton() {
 
         {/* Show point notes if available */}
         {hasNotes && (
-          <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded text-sm text-gray-700 dark:text-gray-300">
+          <div className="mt-2 p-2 sm:p-3 bg-gray-100 dark:bg-gray-700 rounded text-xs sm:text-sm text-gray-700 dark:text-gray-300">
             <strong>ملاحظات:</strong> {row.point_notes}
           </div>
         )}
@@ -583,7 +583,7 @@ function Exoskeleton() {
             <img
               src={galleryImages[0].src}
               alt={row.label}
-              className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80 transition-opacity"
+              className="w-24 h-18 sm:w-32 sm:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => {
                 setOpenGallery({ images: galleryImages, start: 0 });
               }}
@@ -603,10 +603,10 @@ function Exoskeleton() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen px-4">
         <div className="text-center">
-          <FaSpinner className="animate-spin text-4xl text-blue-500 mx-auto mb-4" />
-          <p className="text-gray-600">جاري تحميل بيانات الهيكل الخارجي...</p>
+          <FaSpinner className="animate-spin text-3xl sm:text-4xl text-blue-500 mx-auto mb-4" />
+          <p className="text-gray-600 text-sm sm:text-base">جاري تحميل بيانات الهيكل الخارجي...</p>
         </div>
       </div>
     );
@@ -615,13 +615,13 @@ function Exoskeleton() {
   // Error state
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen px-4">
         <div className="text-center">
-          <FaInfoCircle className="text-4xl text-red-500 mx-auto mb-4" />
-          <p className="text-red-600 mb-4">{error}</p>
+          <FaInfoCircle className="text-3xl sm:text-4xl text-red-500 mx-auto mb-4" />
+          <p className="text-red-600 mb-4 text-sm sm:text-base">{error}</p>
           <button
             onClick={() => navigate("/report-search")}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-sm sm:text-base"
           >
             العودة لصفحة البحث
           </button>
@@ -633,43 +633,43 @@ function Exoskeleton() {
   // No data state
   if (!exoskeletonData) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen px-4">
         <div className="text-center">
-          <FaInfoCircle className="text-4xl text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600">لا توجد بيانات متاحة</p>
+          <FaInfoCircle className="text-3xl sm:text-4xl text-gray-400 mx-auto mb-4" />
+          <p className="text-gray-600 text-sm sm:text-base">لا توجد بيانات متاحة</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div id="الهيكل-الخارجي">
-      <div className="space-y-5 mt-6">
+    <div id="الهيكل-الخارجي" >
+      <div className="space-y-4 sm:space-y-5 mt-4 sm:mt-6">
         {exoskeletonData.itemis.map((item, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (
               <>
-                <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
-                  <span className="font-medium">{item.title}</span>
+                <Disclosure.Button className="w-full flex justify-between items-center px-3 sm:px-4 py-2 sm:py-3 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
+                  <span className="font-medium text-sm sm:text-base">{item.title}</span>
                   <FaChevronDown
-                    className={`transform transition-transform ${open ? "rotate-180" : ""}`}
+                    className={`transform transition-transform ${open ? "rotate-180" : ""} w-4 h-4 sm:w-5 sm:h-5`}
                   />
                 </Disclosure.Button>
 
-                <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-                  <div className="grid grid-cols-2 gap-6">
+                <Disclosure.Panel className="px-3 sm:px-4 py-2 sm:py-3 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                     {/* صورة السيارة */}
-                    <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
+                    <div className="flex flex-col items-center justify-center p-3 sm:p-4 lg:p-6 shadow rounded-lg">
                       <img
                         src={item.carInformation.image}
                         alt="Car"
-                        className="w-full h-full object-contain rounded-lg"
+                        className="w-full h-48 sm:h-64 lg:h-full object-contain rounded-lg"
                       />
                     </div>
 
                     {/* نصوص الوصف */}
-                    <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-                      <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+                    <div className="p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-xs sm:text-sm leading-relaxed">
                         {item.descriptionPoints1.map((point, index) => (
                           <li key={index}>{point}</li>
                         ))}
@@ -678,28 +678,30 @@ function Exoskeleton() {
                   </div>
 
                   {/* أزرار الفلاتر */}
-                  <div className="flex flex-wrap gap-3 mt-6">
+                  <div className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
                     {[
-                      { key: "specifics", label: "جميع نقاط الفحص الخارجي" },
-                      { key: "continue", label: "أجزاء الهيكل الخارجي والجسم" },
-                      { key: "outline", label: "الزجاج الأمامي والخلفي" },
-                      { key: "onabort", label: "المرايا الجانبية اليمين واليسار" },
-                      { key: "allpoint", label: "الشبر والمطاط" },
-                      { key: "parent", label: "الإطار الاحتياطي" },
-                      { key: "review", label: "الجك وعدة الإطارات" },
-                      { key: "sheet", label: "مفتاح ربط الإطارات" },
-                      { key: "tablet", label: "الحالة الداخلية للمقصورة" },
+                      { key: "specifics", label: "جميع نقاط الفحص الخارجي", shortLabel: "جميع النقاط" },
+                      { key: "continue", label: "أجزاء الهيكل الخارجي والجسم", shortLabel: "الهيكل الخارجي" },
+                      { key: "outline", label: "الزجاج الأمامي والخلفي", shortLabel: "الزجاج" },
+                      { key: "onabort", label: "المرايا الجانبية اليمين واليسار", shortLabel: "المرايا" },
+                      { key: "allpoint", label: "الشبر والمطاط", shortLabel: "الشبر والمطاط" },
+                      { key: "parent", label: "الإطار الاحتياطي", shortLabel: "الإطار الاحتياطي" },
+                      { key: "review", label: "الجك وعدة الإطارات", shortLabel: "الجك والأدوات" },
+                      { key: "sheet", label: "مفتاح ربط الإطارات", shortLabel: "مفتاح الربط" },
+                      { key: "tablet", label: "الحالة الداخلية للمقصورة", shortLabel: "الحالة الداخلية" },
                     ].map((btn) => (
                       <button
                         key={btn.key}
                         onClick={() => setFilter(btn.key)}
-                        className={`px-4 py-2 rounded transition-colors duration-200 ${
+                        className={`px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm transition-colors duration-200 ${
                           Filter === btn.key
                             ? "bg-blue-500 text-white dark:bg-blue-600"
                             : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
                         }`}
+                        title={btn.label}
                       >
-                        {btn.label}
+                        <span className="hidden sm:inline">{btn.label}</span>
+                        <span className="sm:hidden">{btn.shortLabel}</span>
                       </button>
                     ))}
                   </div>
@@ -712,9 +714,9 @@ function Exoskeleton() {
                       const cols = [src.slice(0, mid), src.slice(mid)];
 
                       return (
-                        <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+                        <div className="mt-6 sm:mt-8 lg:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-x-4 sm:gap-x-8 lg:gap-x-16 gap-y-6 sm:gap-y-8 lg:gap-y-10">
                           {cols.map((col, colIdx) => (
-                            <div key={colIdx} className="space-y-6">
+                            <div key={colIdx} className="space-y-4 sm:space-y-6">
                               {col.map((row, i) => renderPoint(row, colIdx, i))}
                             </div>
                           ))}
@@ -731,8 +733,8 @@ function Exoskeleton() {
                     />
                   )}
 
-                  <div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
-                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-sm">
+                  <div className="p-3 sm:p-4 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-sm sm:text-base rounded">
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-xs sm:text-sm">
                       الملاحظات:
                       <li>
                         لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى أوتوسكور وقت الفحص

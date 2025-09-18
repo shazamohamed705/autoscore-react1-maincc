@@ -783,7 +783,7 @@ const Sefity = () => {
     return (
       <div key={`${colIdx}-${i}`} className="pb-3 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
         {/* Main row */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
           <div className="flex items-center gap-3 relative">
             {hasInfo && (
               <button
@@ -804,7 +804,7 @@ const Sefity = () => {
             </span>
           </div>
 
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-start sm:items-end">
             <span
               className={`font-bold text-lg ${
                 stat === "✅" || stat === "✔️"
@@ -912,7 +912,7 @@ const Sefity = () => {
 
   return (
     <div id="المكابح-السلامه">
-      <div className="space-y-5 mt-6">
+      <div className="space-y-5 mt-6 px-3 md:px-0">
         {brakingData.itimis7.map((item, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (
@@ -925,11 +925,11 @@ const Sefity = () => {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                     {/* صورة السيارة */}
                     <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg h-full">
                       {item.carInformation1.images.map((img, i) => (
-                        <img key={i} src={img} alt={`car ${i}`} className="w-full h-full max-h-[800px] object-contain rounded-lg hover:scale-105 -  shadow-2xl" />
+                        <img key={i} src={img} alt={`car ${i}`} className="w-full h-auto md:h-full max-h-64 sm:max-h-80 md:max-h-[800px] object-contain rounded-lg hover:scale-105 shadow-2xl" />
                       ))}
                     </div>
 
@@ -989,7 +989,7 @@ const Sefity = () => {
                           <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
                             عرض {src.length} نقطة فحص في قسم "{filterButtons.find(btn => btn.key === Filterr6)?.label}"
                           </div>
-                          <div className="grid grid-cols-2 gap-x-16 gap-y-10">
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-16">
                             {cols.map((col, colIdx) => (
                               <div key={colIdx} className="space-y-6">
                                 {col.map((row, i) => renderPoint(row, colIdx, i))}

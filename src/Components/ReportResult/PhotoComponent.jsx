@@ -396,13 +396,13 @@ function PhotoComponent() {
 
  
   return (
-    <div id="صور-الفحص">
+    <div id="صور-الفحص" >
        <div className="space-y-5 mt-6">
          <Disclosure>
            {({ open }) => (
              <>
-               {/* زر الفتح والغلق */}
-               <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
+              {/* زر الفتح والغلق */}
+              <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
                  <span className="font-medium">{photosData.itemis[0].title}</span>
                  <FaChevronDown
                    className={`transform transition-transform ${
@@ -411,15 +411,15 @@ function PhotoComponent() {
                  />
                </Disclosure.Button>
 
-               {/* المحتوى */}
-               <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+              {/* المحتوى */}
+              <Disclosure.Panel className="px-3 py-2 md:px-4 md:py-3 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
                  {/* عرض الصور حسب الخدمات */}
                  <div className="mt-6 space-y-8">
                    {Object.entries(photosData.itemis[0].groupedPoints).map(([serviceName, points]) => {
                    
                      return (
                        <div key={serviceName} className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
-                         <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold mb-4 text-gray-800 dark:text-white">
                            {serviceName}
                          </h3>
                          
@@ -429,11 +429,11 @@ function PhotoComponent() {
                              return point.gallery && point.gallery.length > 0 ? (
                                point.gallery.map((image, imgIdx) => {
                                  return (
-                                   <div key={`${pointIdx}-${imgIdx}`} className="relative">
+                                <div key={`${pointIdx}-${imgIdx}`} className="relative">
                                      <img
                                        src={image.src}
                                        alt={image.title || point.label}
-                                       className="w-full h-48 object-cover rounded-lg shadow cursor-pointer hover:opacity-80 transition-opacity"
+                                      className="w-full h-36 sm:h-44 md:h-48 lg:h-56 object-cover rounded-lg shadow cursor-pointer hover:opacity-80 transition-opacity"
                                       onClick={() => {
                                          setOpenGallery({
                                           images: point.gallery,

@@ -518,7 +518,7 @@ const PortiesComponent = () => {
       <div key={`${colIdx}-${i}`} className="pb-3">
         {/* Main row */}
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3 relative">
+          <div className="flex items-center gap-2 lg:gap-3 relative">
             {hasInfo && (
               <button
                 onClick={(e) => {
@@ -529,25 +529,26 @@ const PortiesComponent = () => {
                       : `${colIdx}-${i}`
                   );
                 }}
-                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 text-base relative transition-colors"
+                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 text-sm lg:text-base relative transition-colors"
                 aria-label="معلومات إضافية"
               >
-                <FaInfoCircle size={20} />
+                <FaInfoCircle size={16} className="lg:hidden" />
+                <FaInfoCircle size={20} className="hidden lg:block" />
                 {openInfoIndex === `${colIdx}-${i}` && (
-                  <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
+                  <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-2 lg:px-3 py-1 lg:py-2 shadow-lg w-48 lg:w-64 z-10">
                     {row.info}
                   </div>
                 )}
               </button>
             )}
-            <span className="text-black dark:text-white text-base font-medium">
+            <span className="text-black dark:text-white text-sm lg:text-base font-medium">
               {row.label}
             </span>
           </div>
 
           <div className="flex flex-col items-end">
             <span
-              className={`font-bold text-base ${
+              className={`font-bold text-sm lg:text-base ${
                 stat === "✅" || stat === "✔️"
                   ? "text-green-500"
                   : stat === "⚠️"
@@ -567,7 +568,7 @@ const PortiesComponent = () => {
 
         {/* Show point notes if available */}
         {hasNotes && (
-          <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded text-sm text-gray-700 dark:text-gray-300">
+          <div className="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded text-xs lg:text-sm text-gray-700 dark:text-gray-300">
             <strong>ملاحظات:</strong> {row.point_notes}
           </div>
         )}
@@ -592,7 +593,7 @@ const PortiesComponent = () => {
             <img
               src={galleryImages[0].src}
               alt={row.label}
-              className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80 transition-opacity"
+              className="w-24 h-18 lg:w-32 lg:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => {
                 setOpenGallery({ images: galleryImages, start: 0 });
               }}
@@ -665,18 +666,18 @@ const PortiesComponent = () => {
                   />
                 </Disclosure.Button>
 
-                <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-                  <div className="grid grid-cols-2 gap-6">
+                <Disclosure.Panel className="px-3 py-2 lg:px-4 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                     {/* صورة السيارة */}
-                    <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
+                    <div className="flex flex-col items-center justify-center p-4 lg:p-6 shadow rounded-lg">
                       {item.carInformation1.images.map((img, i) => (
                         <img key={i} src={img} alt={`car ${i}`} className="w-full h-full object-contain rounded-lg" />
                       ))}
                     </div>
 
                     {/* نصوص الوصف */}
-                    <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-                      <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+                    <div className="p-3 lg:p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+                      <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-xs sm:text-sm leading-relaxed">
                         {item.descriptionPoints4.map((point, index) => (
                           <li key={index}>{point}</li>
                         ))}
@@ -685,7 +686,7 @@ const PortiesComponent = () => {
                   </div>
 
                   {/* أزرار الفلاتر */}
-                  <div className="flex flex-wrap gap-3 mt-6">
+                  <div className="flex flex-wrap gap-2 lg:gap-3 mt-4 lg:mt-6">
                     {[
                       { key: "chassisMeasurements", label: "جميع نقاط الفحص" },
                       { key: "externalBodyCondition", label: "الصنوبرصات الأمامية والخلفية" },
@@ -700,7 +701,7 @@ const PortiesComponent = () => {
                       <button
                         key={btn.key}
                         onClick={() => setCurrentFilter(btn.key)}
-                        className={`px-4 py-2 rounded transition-colors duration-200 ${
+                        className={`px-2 py-1 lg:px-4 lg:py-2 rounded transition-colors duration-200 text-xs lg:text-sm ${
                           currentFilter === btn.key
                             ? "bg-blue-500 text-white dark:bg-blue-600"
                             : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -719,9 +720,9 @@ const PortiesComponent = () => {
                       const cols = [src.slice(0, mid), src.slice(mid)];
 
                       return (
-                        <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+                        <div className="mt-6 lg:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-x-8 lg:gap-x-16 gap-y-6 lg:gap-y-10">
                           {cols.map((col, colIdx) => (
-                            <div key={colIdx} className="space-y-6">
+                            <div key={colIdx} className="space-y-4 lg:space-y-6">
                               {col.map((row, i) => renderPoint(row, colIdx, i))}
                             </div>
                           ))}
@@ -739,8 +740,8 @@ const PortiesComponent = () => {
                     />
                   )}
 
-                  <div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
-                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-sm">
+                  <div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-sm lg:text-base rounded">
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-xs lg:text-sm">
                       الملاحظات:
                       <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
                       <li>يتم عرض النتائج بناءً على البيانات المتاحة من API مع معالجة الأخطاء المحسنة</li>

@@ -658,11 +658,17 @@ function ChassisOptimized() {
 
                 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
                   
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Car images */}
                     <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded-lg">
                       {chassisData.itimis[0].carInformation1.images.map((img, i) => (
-                        <img key={i} src={img} alt={`car ${i}`} />
+                        <img
+                          key={i}
+                          src={img}
+                          alt={`car ${i}`}
+                          className="w-full h-auto max-h-64 object-contain mb-4"
+                          loading="lazy"
+                        />
                       ))}
                     </div>
 
@@ -704,23 +710,11 @@ function ChassisOptimized() {
                     ))}
                   </div>
 
-                  {/* Filter content - Optimized with memoized data */}
+                  {/* Filter content - Optimized & responsive */}
                   {["chassisAll", "chassisMeasurements","frontLeftFrame","frontRightFrame","rearRightFrame","rearLeftFrame","frontFrame","inspectionPoints","topFrame"].includes(Filterr) && (
-                    (() => {
-                      const src = currentFilterData;
-                      const mid = Math.ceil(src.length / 2);
-                      const cols = [src.slice(0, mid), src.slice(mid)];
-
-                      return (
-                        <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
-                          {cols.map((col, colIdx) => (
-                            <div key={colIdx} className="space-y-6">
-                              {col.map((row, i) => renderPoint(row, colIdx, i))}
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    })()
+                    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+                      {currentFilterData.map((row, i) => renderPoint(row, 0, i))}
+                    </div>
                   )}
 
                   {/* FullScreenGallery modal */}

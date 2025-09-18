@@ -431,51 +431,51 @@ const getInspectionStatus = (status, percentage) => {
 const StatusDisplay = React.memo(({ status, score }) => {
   if (status === "success") {
     return (
-      <>
-        <FaCheckCircle className="text-green-500 text-3xl" />
-        <span className="font-bold text-green-600">ناجحة</span>
-        <span className="text-sm text-gray-500 mt-1">ممتازة</span>
-      </>
+      <div className="flex flex-col items-center text-center">
+        <FaCheckCircle className="text-green-500 text-2xl sm:text-3xl mb-2" />
+        <span className="font-bold text-green-600 text-sm sm:text-base">ناجحة</span>
+        <span className="text-xs sm:text-sm text-gray-500 mt-1">ممتازة</span>
+      </div>
     );
   }
   
   if (status === "warning") {
     return (
-      <>
-        <div className="w-20 h-20 flex items-center justify-center rounded-full bg-yellow-100 border-4 border-yellow-500 text-yellow-600 font-bold text-4xl shadow-md">
+      <div className="flex flex-col items-center text-center">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-yellow-100 border-4 border-yellow-500 text-yellow-600 font-bold text-3xl sm:text-4xl shadow-md">
           C
         </div>
-        <span className="mt-2 text-yellow-600 font-semibold">تحتاج صيانة</span>
-        <span className="text-sm text-gray-500 mt-1">متوسطة</span>
-      </>
+        <span className="mt-2 text-yellow-600 font-semibold text-sm sm:text-base">تحتاج صيانة</span>
+        <span className="text-xs sm:text-sm text-gray-500 mt-1">متوسطة</span>
+      </div>
     );
   }
   
   if (status === "error") {
     return (
-      <>
-        <div className="w-20 h-20 flex items-center justify-center rounded-full bg-red-100 border-4 border-red-500 text-red-600 font-bold text-4xl shadow-md">
+      <div className="flex flex-col items-center text-center">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-red-100 border-4 border-red-500 text-red-600 font-bold text-3xl sm:text-4xl shadow-md">
           F
         </div>
-        <span className="mt-2 text-red-600 font-semibold">غير ناجحة</span>
-        <span className="text-sm text-gray-500 mt-1">ضعيفة</span>
-      </>
+        <span className="mt-2 text-red-600 font-semibold text-sm sm:text-base">غير ناجحة</span>
+        <span className="text-xs sm:text-sm text-gray-500 mt-1">ضعيفة</span>
+      </div>
     );
   }
   
   if (status === "pending") {
     return (
-      <>
-        <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gray-100 border-4 border-gray-400 text-gray-600 font-bold text-4xl shadow-md">
+      <div className="flex flex-col items-center text-center">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-100 border-4 border-gray-400 text-gray-600 font-bold text-3xl sm:text-4xl shadow-md">
           ?
         </div>
-        <span className="mt-2 text-gray-600 font-semibold">في الانتظار</span>
-        <span className="text-sm text-gray-500 mt-1">لم يتم الفحص بعد</span>
-      </>
+        <span className="mt-2 text-gray-600 font-semibold text-sm sm:text-base">في الانتظار</span>
+        <span className="text-xs sm:text-sm text-gray-500 mt-1">لم يتم الفحص بعد</span>
+      </div>
     );
   }
   
-  return <span className="text-gray-500">-</span>;
+  return <span className="text-gray-500 text-sm sm:text-base">-</span>;
 });
 
 const CarInfoGrid = React.memo(({ carInfo, onGalleryOpen, reportData, inspectionPoints, navigationData, handleGalleryOpen }) => {
@@ -519,14 +519,15 @@ const CarInfoGrid = React.memo(({ carInfo, onGalleryOpen, reportData, inspection
   }
 
   return (
-    <div className="grid grid-cols-3 gap-6">
-      <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white shadow rounded-lg h-60">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {/* Vehicle Info Card */}
+      <div className="flex flex-col items-center justify-center p-4 sm:p-6 bg-white dark:bg-black border border-gray-100 dark:border-white shadow rounded-lg min-h-[200px] sm:min-h-[240px]">
         <div className="text-center">
-          <span className="text-black dark:text-white text-xl font-bold text-gray-800 mb-2 block">
+          <span className="text-black dark:text-white text-lg sm:text-xl font-bold text-gray-800 mb-2 block">
             {carInfo.displayVehicleName || carInfo.brand}
           </span>
           {carInfo.year && carInfo.year !== "-" && (
-            <span className="text-black dark:text-white text-lg font-semibold text-gray-600 block">
+            <span className="text-black dark:text-white text-base sm:text-lg font-semibold text-gray-600 block">
               {carInfo.year}
             </span>
           )}
@@ -538,27 +539,29 @@ const CarInfoGrid = React.memo(({ carInfo, onGalleryOpen, reportData, inspection
         </div>
       </div>
 
-      <div className="p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded text-center">
-        <h2 className="text-black dark:text-white text-xl font-semibold text-gray-900 mb-4">
+      {/* Report Info Card */}
+      <div className="p-4 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded text-center">
+        <h2 className="text-black dark:text-white text-lg sm:text-xl font-semibold text-gray-900 mb-4">
           {carInfo.title}
         </h2>
-        <div className="flex justify-between mt-4 text-black dark:text-white text-base">
-          <div className="text-right">
-            <span className="block text-sm text-gray-600 text-black dark:text-white">رقم التقرير</span>
-            <h3 className="text-black dark:text-white font-semibold text-gray-800">
+        <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 mt-4 text-black dark:text-white text-sm sm:text-base">
+          <div className="text-center sm:text-right">
+            <span className="block text-xs sm:text-sm text-gray-600 text-black dark:text-white">رقم التقرير</span>
+            <h3 className="text-black dark:text-white font-semibold text-gray-800 text-sm sm:text-base break-all">
               {carInfo.reportNumber}
             </h3>
           </div>
-          <div className="text-left">
-            <span className="block text-sm text-gray-600 text-black dark:text-white">رقم الشاسيه</span>
-            <h3 className="font-semibold text-gray-800 text-black dark:text-white">
+          <div className="text-center sm:text-left">
+            <span className="block text-xs sm:text-sm text-gray-600 text-black dark:text-white">رقم الشاسيه</span>
+            <h3 className="font-semibold text-gray-800 text-black dark:text-white text-sm sm:text-base break-all">
               {carInfo.chassisNumber}
             </h3>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg h-60">
+      {/* Image Card */}
+      <div className="flex flex-col items-center p-4 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg min-h-[200px] sm:min-h-[240px] sm:col-span-2 lg:col-span-1">
         {allImages.length > 0 ? (
           <div className="relative w-full h-full">
             {/* عرض الصورة الأولى فقط */}
@@ -586,7 +589,7 @@ const CarInfoGrid = React.memo(({ carInfo, onGalleryOpen, reportData, inspection
             
             {/* مؤشر عدد الصور */}
             {allImages.length > 1 && (
-              <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-sm">
+              <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded-full text-xs sm:text-sm">
                 {allImages.length} صور
               </div>
             )}
@@ -595,16 +598,16 @@ const CarInfoGrid = React.memo(({ carInfo, onGalleryOpen, reportData, inspection
             {allImages.length > 1 && (
               <button
                 onClick={() => handleGalleryOpen(allImages, 0)}
-                className="absolute bottom-2 right-2 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full shadow-lg transition-colors"
+                className="absolute bottom-2 right-2 bg-blue-500 hover:bg-blue-600 text-white p-1.5 sm:p-2 rounded-full shadow-lg transition-colors"
                 title="عرض جميع الصور"
               >
-                <FaExpand className="text-sm" />
+                <FaExpand className="text-xs sm:text-sm" />
               </button>
             )}
             
             {/* نص توضيحي */}
             {allImages.length > 1 && (
-              <div className="absolute bottom-2 left-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+              <div className="absolute bottom-2 left-2 bg-black bg-opacity-70 text-white px-1.5 sm:px-2 py-1 rounded text-xs hidden sm:block">
                 اضغط لعرض جميع الصور
               </div>
             )}
@@ -622,30 +625,30 @@ const CarInfoGrid = React.memo(({ carInfo, onGalleryOpen, reportData, inspection
 });
 
 const GaugeSection = React.memo(({ score, currentGrade, showInfo, setShowInfo }) => (
-  <div className="p-6 flex flex-col items-start bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
+  <div className="p-4 sm:p-6 flex flex-col items-start bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg w-full">
     <button
-      className="mb-4 w-10 h-10 flex items-center justify-center bg-white dark:bg-black border border-black dark:border-white rounded-full shadow hover:bg-gray-100"
+      className="mb-3 sm:mb-4 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-white dark:bg-black border border-black dark:border-white rounded-full shadow hover:bg-gray-100"
       onClick={() => setShowInfo(!showInfo)}
     >
-      <FaInfoCircle className="text-blue-500 text-xl" />
+      <FaInfoCircle className="text-blue-500 text-sm sm:text-xl" />
     </button>
 
     {showInfo && (
-      <div className="mb-4 bg-white shadow-lg border rounded-lg p-4 w-full">
-        <table className="table-auto border-collapse border border-gray-300 w-full text-center">
+      <div className="mb-3 sm:mb-4 bg-white shadow-lg border rounded-lg p-3 sm:p-4 w-full overflow-x-auto">
+        <table className="table-auto border-collapse border border-gray-300 w-full text-center text-xs sm:text-sm">
           <thead>
             <tr>
-              <th className="border border-gray-300 px-3 py-1">Grade</th>
-              <th className="border border-gray-300 px-3 py-1">Range</th>
+              <th className="border border-gray-300 px-2 sm:px-3 py-1">Grade</th>
+              <th className="border border-gray-300 px-2 sm:px-3 py-1">Range</th>
             </tr>
           </thead>
           <tbody>
             {GRADES.map((g) => (
               <tr key={g.label}>
-                <td className={`border border-gray-300 px-3 py-1 font-bold ${g.textColor}`}>
+                <td className={`border border-gray-300 px-2 sm:px-3 py-1 font-bold ${g.textColor}`}>
                   {g.label}
                 </td>
-                <td className="border border-gray-300 px-3 py-1">
+                <td className="border border-gray-300 px-2 sm:px-3 py-1">
                   {g.range[0]}% - {g.range[1]}%
                 </td>
               </tr>
@@ -655,16 +658,20 @@ const GaugeSection = React.memo(({ score, currentGrade, showInfo, setShowInfo })
       </div>
     )}
 
-    <GaugeChart
-      id="gauge-chart"
-      nrOfLevels={20}
-      colors={["#ef4444", "#f97316", "#eab308", "#22c55e"]}
-      arcWidth={0.3}
-      percent={score / 100}
-      textColor="#000000"
-    />
+    <div className="w-full flex justify-center">
+      <div className="w-full max-w-[200px] sm:max-w-[250px]">
+        <GaugeChart
+          id="gauge-chart"
+          nrOfLevels={20}
+          colors={["#ef4444", "#f97316", "#eab308", "#22c55e"]}
+          arcWidth={0.3}
+          percent={score / 100}
+          textColor="#000000"
+        />
+      </div>
+    </div>
 
-    <div className="text-2xl font-bold mt-2">
+    <div className="text-xl sm:text-2xl font-bold mt-2 text-center w-full">
       <span className={currentGrade?.textColor || ""}>
         {score}%
       </span>
@@ -1395,11 +1402,11 @@ function ReportData() {
   // Loading state
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex items-center justify-center min-h-[300px] px-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">جاري تحميل بيانات الفحص...</p>
-          <p className="text-sm text-gray-500 mt-2">يرجى الانتظار...</p>
+          <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">جاري تحميل بيانات الفحص...</p>
+          <p className="text-xs sm:text-sm text-gray-500 mt-2">يرجى الانتظار...</p>
         </div>
       </div>
     );
@@ -1408,13 +1415,13 @@ function ReportData() {
   // Error state
   if (error) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-center max-w-md mx-4">
-          <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <p className="text-red-600 dark:text-red-400 text-lg mb-4">{error}</p>
+      <div className="flex items-center justify-center min-h-[300px] px-4">
+        <div className="text-center max-w-md w-full">
+          <div className="text-red-500 text-4xl sm:text-6xl mb-4">⚠️</div>
+          <p className="text-red-600 dark:text-red-400 text-base sm:text-lg mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()} 
-            className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            className="w-full px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm sm:text-base"
           >
             إعادة المحاولة
           </button>
@@ -1426,34 +1433,31 @@ function ReportData() {
   // No data state
   if (!reportData) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex items-center justify-center min-h-[300px] px-4">
         <div className="text-center">
-          <div className="text-gray-400 text-6xl mb-4">📋</div>
-          <p className="text-gray-600 dark:text-gray-400 text-lg mb-2">لا توجد بيانات فحص متاحة</p>
-          <p className="text-sm text-gray-500">يرجى التحقق من الاتصال بالخادم</p>
+          <div className="text-gray-400 text-4xl sm:text-6xl mb-4">📋</div>
+          <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg mb-2">لا توجد بيانات فحص متاحة</p>
+          <p className="text-xs sm:text-sm text-gray-500">يرجى التحقق من الاتصال بالخادم</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex-grow">
-      <h1 className="text-black dark:text-white text-2xl font-bold mb-6">تقرير فحص السيارة</h1>
+    <div className="flex-grow px-4 sm:px-6 lg:px-8">
+      <h1 className="text-black dark:text-white text-xl sm:text-2xl font-bold mb-4 sm:mb-6">تقرير فحص السيارة</h1>
       
-      <div className="space-y-4">
-        
-      
-
+      <div className="space-y-4 sm:space-y-6">
         <Disclosure defaultOpen>
           {({ open }) => (
             <>
-              <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
-                <span className="text-black dark:text-white font-medium">بيانات الفحص</span>
-                <FaChevronDown className={`transform transition-transform ${open ? "rotate-180" : ""}`} />
+              <Disclosure.Button className="w-full flex justify-between items-center px-4 py-3 sm:py-4 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
+                <span className="text-black dark:text-white font-medium text-sm sm:text-base">بيانات الفحص</span>
+                <FaChevronDown className={`transform transition-transform ${open ? "rotate-180" : ""} text-sm sm:text-base`} />
               </Disclosure.Button>
 
-              <Disclosure.Panel className="px-4 py-2 bg-white dark:bg-black rounded-b-md border border-t-0 border-gray-200">
-                <div className="space-y-6">
+              <Disclosure.Panel className="px-2 sm:px-4 py-2 bg-white dark:bg-black rounded-b-md border border-t-0 border-gray-200">
+                <div className="space-y-4 sm:space-y-6">
                   {/* Car Info Grid */}
                   <CarInfoGrid 
                     carInfo={carInfo} 
@@ -1465,22 +1469,24 @@ function ReportData() {
                   />
 
                   {/* Status Grid */}
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {/* Gauge Chart */}
-                    <GaugeSection 
-                      score={score} 
-                      currentGrade={currentGrade} 
-                      showInfo={showInfo} 
-                      setShowInfo={setShowInfo} 
-                    />
+                    <div className="sm:col-span-2 lg:col-span-1">
+                      <GaugeSection 
+                        score={score} 
+                        currentGrade={currentGrade} 
+                        showInfo={showInfo} 
+                        setShowInfo={setShowInfo} 
+                      />
+                    </div>
 
                     {/* Status Display */}
-                    <div className="flex flex-col items-center justify-center p-2 bg-white shadow rounded bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
+                    <div className="flex flex-col items-center justify-center p-4 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg min-h-[200px]">
                       <StatusDisplay status={inspectionInfo.status} score={score} />
                       {inspectionInfo.status === "error" && (
                         <button
                           onClick={() => setShowReasons(true)}
-                          className="mt-2 text-sm text-red-600 underline hover:text-red-800"
+                          className="mt-4 px-4 py-2 text-sm text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors"
                         >
                           عرض الأسباب
                         </button>
@@ -1488,16 +1494,16 @@ function ReportData() {
                     </div>
 
                     {/* Market Value */}
-                    <div className="relative flex flex-col items-center justify-center p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
+                    <div className="relative flex flex-col items-center justify-center p-4 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg min-h-[200px]">
                       <img
                         src={image55}
                         alt="car"
-                        className="w-20 h-20 rounded-full object-cover"
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover"
                         onError={(e) => {
                           e.target.src = "/img1.png";
                         }}
                       />
-                      <span className="mt-3 text-lg font-bold">القيمة التسويقية</span>
+                      <span className="mt-3 text-base sm:text-lg font-bold text-center">القيمة التسويقية</span>
                     </div>
                   </div>
 
@@ -1507,32 +1513,32 @@ function ReportData() {
                       معلومات التقرير
                     </h2>
 
-                    <div className="grid grid-cols-2 gap-x-8 text-base dark:text-white">
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">التاريخ</span>
-                        <span className="font-semibold dark:text-white">{formatDate(reportData.created_at)}</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-x-8 text-sm sm:text-base dark:text-white">
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">التاريخ</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{formatDate(reportData.created_at)}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">رقم التقرير</span>
-                        <span className="font-semibold dark:text-white">{carInfo.reportNumber}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">رقم التقرير</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right break-all">{carInfo.reportNumber}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">نوع الفحص</span>
-                        <span className="font-semibold dark:text-white">
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">نوع الفحص</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">
                           {reportData.status === 'pending' ? 'في الانتظار' : 'مكتمل'}
                         </span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">النسبة المئوية</span>
-                        <span className="font-semibold dark:text-white">{score.toFixed(1)}%</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">النسبة المئوية</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{score.toFixed(1)}%</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">الدرجة</span>
-                        <span className="font-semibold dark:text-white">{reportData?.grade || currentGrade?.label || '-'}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">الدرجة</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{reportData?.grade || currentGrade?.label || '-'}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">النتيجة الإجمالية</span>
-                        <span className="font-semibold dark:text-white">
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">النتيجة الإجمالية</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">
                           {reportData?.total_score ? `${reportData.total_score.toFixed(1)}/${reportData.max_possible_score}` : '-'}
                         </span>
                       </div>
@@ -1542,54 +1548,54 @@ function ReportData() {
                       معلومات المركبة
                     </h2>
 
-                    <div className="grid grid-cols-2 gap-x-8 text-base dark:text-white">
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">النوع</span>
-                        <span className="font-semibold dark:text-white">{carInfo.bodyType}</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-x-8 text-sm sm:text-base dark:text-white">
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">النوع</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.bodyType}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2 dark:text-white">
-                        <span className="text-gray-600 font-semibold">الموديل</span>
-                        <span className="font-semibold dark:text-white">{carInfo.model}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2 dark:text-white">
+                        <span className="text-gray-600 font-semibold mb-1 sm:mb-0">الموديل</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.model}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">الفئة</span>
-                        <span className="font-semibold dark:text-white">{carInfo.category}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">الفئة</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.category}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">سنة الصنع</span>
-                        <span className="font-semibold dark:text-white">{carInfo.year}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">سنة الصنع</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.year}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">سعة المحرك</span>
-                        <span className="font-semibold dark:text-white">{carInfo.engineType}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">سعة المحرك</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.engineType}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">العداد الحالي</span>
-                        <span className="font-semibold dark:text-white">{carInfo.mileage}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">العداد الحالي</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.mileage}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">رقم اللوحة</span>
-                        <span className="font-semibold dark:text-white">{carInfo.licensePlate}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">رقم اللوحة</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.licensePlate}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">لون السيارة</span>
-                        <span className="font-semibold dark:text-white">{carInfo.color}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">لون السيارة</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.color}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">نوع المحرك</span>
-                        <span className="font-semibold dark:text-white">{carInfo.fuelType}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">نوع المحرك</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.fuelType}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">ناقل الحركة</span>
-                        <span className="font-semibold dark:text-white">{carInfo.transmission}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">ناقل الحركة</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.transmission}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">نوع الدفع</span>
-                        <span className="font-semibold dark:text-white">{carInfo.drivetrain}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">نوع الدفع</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.drivetrain}</span>
                       </div>
-                      <div className="flex justify-between border-b py-2">
-                        <span className="text-gray-600 font-semibold dark:text-white">نوع الهيكل</span>
-                        <span className="font-semibold dark:text-white">{carInfo.bodyType}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                        <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">نوع الهيكل</span>
+                        <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.bodyType}</span>
                       </div>
                     </div>
 
@@ -1600,18 +1606,18 @@ function ReportData() {
                           معلومات المالك
                         </h2>
 
-                        <div className="grid grid-cols-2 gap-x-8 text-base dark:text-white">
-                          <div className="flex justify-between border-b py-2">
-                            <span className="text-gray-600 font-semibold dark:text-white">اسم المالك</span>
-                            <span className="font-semibold dark:text-white">{carInfo.ownerName}</span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-x-8 text-sm sm:text-base dark:text-white">
+                          <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                            <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">اسم المالك</span>
+                            <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.ownerName}</span>
                           </div>
-                          <div className="flex justify-between border-b py-2">
-                            <span className="text-gray-600 font-semibold dark:text-white">رقم الهاتف</span>
-                            <span className="font-semibold dark:text-white">{carInfo.ownerPhone}</span>
+                          <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2">
+                            <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">رقم الهاتف</span>
+                            <span className="font-semibold dark:text-white text-left sm:text-right">{carInfo.ownerPhone}</span>
                           </div>
-                          <div className="flex justify-between border-b py-2">
-                            <span className="text-gray-600 font-semibold dark:text-white">البريد الإلكتروني</span>
-                            <span className="font-semibold dark:text-white">{carInfo.applicantEmail}</span>
+                          <div className="flex flex-col sm:flex-row sm:justify-between border-b py-2 sm:col-span-2">
+                            <span className="text-gray-600 font-semibold dark:text-white mb-1 sm:mb-0">البريد الإلكتروني</span>
+                            <span className="font-semibold dark:text-white text-left sm:text-right break-all">{carInfo.applicantEmail}</span>
                           </div>
                         </div>
                       </>
@@ -1619,13 +1625,13 @@ function ReportData() {
                   </div>
 
                   {/* Features Section */}
-                  <div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg p-4">
-                    <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">الإضافات</h3>
+                  <div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg p-4 sm:p-6">
+                    <h3 className="text-sm sm:text-base font-bold mb-3 text-gray-900 dark:text-white">الإضافات</h3>
                     <div className="flex flex-wrap gap-2">
                       {FEATURES.map((item, index) => (
                         <div
                           key={index}
-                          className="flex items-center border border-red-500 rounded-full px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-white"
+                          className="flex items-center border border-red-500 rounded-full px-2 py-1 text-xs font-medium text-gray-700 dark:text-white"
                         >
                           <span className="text-gray-700 dark:text-white text-xs mr-1">✓</span>
                           {item}
@@ -1646,10 +1652,10 @@ function ReportData() {
 
       {/* Failure Reasons Modal */}
       {showReasons && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-black p-6 rounded shadow-lg max-w-md w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-black p-4 sm:p-6 rounded shadow-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-black dark:text-white text-xl font-bold text-red-600">
+              <h2 className="text-black dark:text-white text-lg sm:text-xl font-bold text-red-600">
                 {reportData?.failure_reasons === null ? 
                   "أسباب الفشل من النقاط الفاشلة" : 
                   "أسباب الفشل في الفحص"
@@ -1657,9 +1663,9 @@ function ReportData() {
               </h2>
               <button
                 onClick={() => setShowReasons(false)}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-1"
               >
-                <FaTimes />
+                <FaTimes className="text-lg sm:text-xl" />
               </button>
             </div>
             
@@ -1678,15 +1684,15 @@ function ReportData() {
                             <strong>التفسير:</strong> {item.explanation}
                           </div>
                         )}
-                        <div className="flex flex-wrap gap-2 text-xs text-gray-500">
+                        <div className="flex flex-wrap gap-1 sm:gap-2 text-xs text-gray-500">
                           {item.score && (
-                            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">النتيجة: {item.score}</span>
+                            <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">النتيجة: {item.score}</span>
                           )}
                           {item.section && (
-                            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">القسم: {item.section}</span>
+                            <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">القسم: {item.section}</span>
                           )}
                           {item.serviceId && (
-                            <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">ID: {item.serviceId}</span>
+                            <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">ID: {item.serviceId}</span>
                           )}
                         </div>
                       </div>
@@ -1704,7 +1710,7 @@ function ReportData() {
             </ul>
             <button
               onClick={() => setShowReasons(false)}
-              className="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+              className="mt-4 w-full px-4 py-2 sm:py-3 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-sm sm:text-base"
             >
               إغلاق
             </button>

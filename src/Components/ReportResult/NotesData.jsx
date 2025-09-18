@@ -372,7 +372,10 @@ function NotesData() {
 
 
   return (
-    <div id="ملاحظات-الفحص" className="space-y-5 mt-6">
+    <div id="ملاحظات-الفحص" >
+        
+             <div className="space-y-5 mt-6">
+
       <Disclosure>
         {({ open }) => (
           <>
@@ -389,7 +392,7 @@ function NotesData() {
                   Object.entries(item.groupedPoints).map(([serviceName, points]) => 
                     points.map((point, pointIdx) => {
                       return point.point_notes ? (
-                        <li key={`${serviceName}-${pointIdx}`} className="text-gray-700 dark:text-gray-200">
+                        <li key={`${serviceName}-${pointIdx}`} className="text-gray-700 dark:text-gray-200 break-words leading-relaxed">
                           {point.point_notes}
                         </li>
                       ) : null;
@@ -401,7 +404,10 @@ function NotesData() {
           </>
         )}
       </Disclosure>
+  
     </div>
+    
+     </div>
   );
 }
 

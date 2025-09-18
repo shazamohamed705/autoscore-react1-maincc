@@ -1460,7 +1460,7 @@ const seftiy = {
 
   <div className="flex-grow">
 
-      <h1 className="text-black dark:text-white text-base -2xl font-bold mb-6">تقرير فحص السيارة</h1>
+      <h1 className="text-black dark:text-white text-2xl font-bold mb-6">تقرير فحص السيارة</h1>
 
       <div className="space-y-4">
         {reportData.sections.map((section, idx) => (
@@ -1486,8 +1486,8 @@ const seftiy = {
                   {section.type === "details" ? (
                     <div className="space-y-6">
   {/* مربعات المعلومات */}
-  <div className="grid grid-cols-3 gap-6">
-    <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white shadow rounded-lg h-60">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white shadow rounded-lg h-auto sm:h-60">
 
   {/* اسم الماركة */}
  
@@ -2156,7 +2156,7 @@ const seftiy = {
           </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {/* صورة السيارة */}
               <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
                 <img
@@ -2378,7 +2378,7 @@ const seftiy = {
     const cols = [src.slice(0, mid), src.slice(mid)];
 
     return (
-      <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-6 md:gap-y-10">
         {cols.map((col, colIdx) => (
           <div key={colIdx} className="space-y-6">
             {col.map((row, i) => {
@@ -2492,11 +2492,11 @@ const seftiy = {
         </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* صورة السيارة */}
             <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
               {Move.itimis1[0].carInformation1.images.map((img, i) => (
-<img key={i} src={img} alt={`car ${i}`} />
+<img key={i} src={img} alt={`car ${i}`} className="w-full h-auto object-contain" />
 ))}
 
             </div>
@@ -2878,7 +2878,7 @@ const seftiy = {
           </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-           <div className="grid grid-cols-2 gap-6 items-stretch">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
   {/* صورة السيارة */}
   <div className="shadow rounded-lg overflow-hidden">
     {Fixed.itimis4[0].carInformation1.images.map((img, i) => (
@@ -2886,7 +2886,7 @@ const seftiy = {
         key={i}
         src={img}
         alt={`car ${i}`}
-        className="w-full h-full object-cover object-center"
+        className="w-full h-auto object-contain object-center"
       />
     ))}
   </div>
@@ -2929,7 +2929,7 @@ const seftiy = {
     const cols = [src.slice(0, mid), src.slice(mid)];
 
     return (
-      <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-6 md:gap-y-10">
         {cols.map((col, colIdx) => (
           <div key={colIdx} className="space-y-6">
             {col.map((row, i) => {
@@ -3390,7 +3390,7 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
               {/* صورة السيارة */}
               <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
                 {seftiy.itimis7[0].carInformation1.images.map((img, i) => (
-  <img key={i} src={img} alt={`car ${i}`} />
+  <img key={i} src={img} alt={`car ${i}`} className="w-full h-auto object-contain" />
 ))}
 
               </div>
