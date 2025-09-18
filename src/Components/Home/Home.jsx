@@ -184,9 +184,9 @@ const handleArticleClick = (articleId) => {
 
       {/* home */}
 {/* سكشن Home */}
-<section className="home flex flex-col md:flex-row justify-between items-start pt-4 md:pt-8 px-6 bg-gray-50 dark:bg-gray-900 relative">
+<section className="home flex flex-col md:flex-row justify-between items-center md:items-start pt-4 md:pt-8 px-6 bg-gray-50 dark:bg-gray-900 relative">
   {/* الكلام والزر */}
-  <div className="text-center max-w-xl z-10">
+  <div className="text-center max-w-xl z-10 mx-auto md:mx-0">
     <h1 className="text-3xl md:text-3xl font-extrabold dark:text-white leading-snug">
       <span className="text-red-600">أول</span> نظام فحص
       <span className="block mt-2">مركبات شامل عالمي</span>
@@ -202,7 +202,7 @@ const handleArticleClick = (articleId) => {
     </button>
   </div>
 
- <div className="absolute bottom-0 left-20 w-1/3 md:w-1/4">
+<div className="absolute bottom-0 left-1/2 -translate-x-1/2 transform w-1/2 md:left-20 md:translate-x-0 md:w-1/4">
   <img src="./sc2.png" alt="car" className="w-full h-auto" />
 </div>
 </section>
@@ -218,16 +218,21 @@ const handleArticleClick = (articleId) => {
 
     <div className="grid md:grid-cols-3 gap-8">
 
-      {/* الكارت الأول */}
-      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 flex flex-row items-center text-right gap-4">
-        <div className="bg-black dark:bg-gray-700 text-white w-16 h-16 flex items-center justify-center rounded-full">
-          <FaCalendarAlt size={28} />
-        </div>
-        <div>
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white">تريد فحص سيارتك؟</h3>
-          <p className="text-gray-600 dark:text-gray-300">احجز الآن</p>
-        </div>
-      </div>
+    
+<div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 flex flex-row items-center text-right gap-4">
+  <div className="bg-black dark:bg-gray-700 text-white w-16 h-16 flex items-center justify-center rounded-full">
+    <FaCalendarAlt size={28} />
+  </div>
+  <div>
+    <h3 className="text-lg font-bold text-gray-900 dark:text-white">تريد فحص سيارتك؟</h3>
+    <Link 
+      to="/appointment" 
+      className="text-blue-600 dark:text-blue-400 hover:underline"
+    >
+      احجز الآن
+    </Link>
+  </div>
+</div>
 
       {/* الكارت الثاني */}
       <a 
@@ -388,7 +393,7 @@ const handleArticleClick = (articleId) => {
         { img: photo1, num: "16", text: "جهة معتمدة" },
         { img: photo3, num: "+70", text: "موظف" },
         { img: phoyo7, num: "+14,000", text: "تلاعب تم كشفه" },
-        { img: photo4, num: "4", text: "فروع" },
+        { img: photo4, num: "3", text: "فروع" },
       ], []).map((item, index) => (
         <div
           key={index}

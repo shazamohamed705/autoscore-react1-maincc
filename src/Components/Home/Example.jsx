@@ -2142,7 +2142,7 @@ const seftiy = {
 </div>
       {/* الهيكل الخارجي */}
       <div id="الهيكل-الخارجي">
-
+   {/* المحرك الحركه */}
     <div className="space-y-5 mt-6">
   {exoskeleton.itemis.map((item, idx) => (
     <Disclosure key={idx} >
@@ -2317,15 +2317,15 @@ const seftiy = {
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-<div className="grid grid-cols-2 gap-6 items-stretch">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
   {/* صورة السيارة */}
-  <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded-lg overflow-hidden flex">
+  <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded-lg overflow-hidden flex overflow-x-auto gap-3 md:overflow-visible">
     {Chassisa.itimis[0].carInformation1.images.map((img, i) => (
     <img
   key={i}
   src={img}
   alt={`car ${i}`}
-  className="w-full h-full "
+      className="w-48 h-32 md:w-full md:h-full object-cover flex-none rounded-md"
 />
 
     ))}
@@ -2343,7 +2343,7 @@ const seftiy = {
 
 
             {/* أزرار الفلاتر */}
-           <div className="flex flex-wrap gap-3 mt-6">
+           <div className="flex flex-wrap gap-3 mt-6 overflow-x-auto">
   {[
     { key: "specifics1", label: "جميع نقاط الفحص" },
     { key: "continue1", label: "قياسات الشاصي الامامي اليمين1  " },
@@ -2358,7 +2358,7 @@ const seftiy = {
     <button
       key={btn.key}
       onClick={() => setFilterr(btn.key)}
-      className={`px-4 py-2 rounded transition-colors duration-200 ${
+      className={`px-4 py-2 rounded transition-colors duration-200 whitespace-nowrap ${
         Filterr === btn.key
           ? "bg-blue-500 text-white dark:bg-blue-600"
           : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -2432,7 +2432,7 @@ const seftiy = {
       src={row.gallery[0].src}
 
       alt={row.label}
-      className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+      className="w-24 h-20 md:w-32 md:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
       onClick={() =>
         setOpenGallery({ images: row.gallery, start: 0 }) 
       }
@@ -2484,26 +2484,28 @@ const seftiy = {
   <Disclosure key={idx} >
     {({ open }) => (
       <>
-<Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
-          <span className="font-medium">{item.title}</span>
+{/* الحفاظ على حجم Disclosure.Button للكمبيوتر وجعله responsive للهواتف */}
+<Disclosure.Button className="w-full flex justify-between items-center px-3 sm:px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm sm:text-base">
+          <span className="font-medium text-sm sm:text-base">{item.title}</span>
           <FaChevronDown
-            className={`transform transition-transform ${open ? "rotate-180" : ""}`}
+            className={`transform transition-transform text-sm sm:text-base ${open ? "rotate-180" : ""}`}
           />
         </Disclosure.Button>
 
-<Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+<Disclosure.Panel className="px-2 sm:px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+          {/* تحسين الشبكة للهواتف والكمبيوتر */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
             {/* صورة السيارة */}
-            <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
+            <div className="flex flex-col items-center justify-center p-3 sm:p-6 shadow rounded-lg">
               {Move.itimis1[0].carInformation1.images.map((img, i) => (
-<img key={i} src={img} alt={`car ${i}`} className="w-full h-auto object-contain" />
+<img key={i} src={img} alt={`car ${i}`} className="w-full h-auto object-contain max-w-full" />
 ))}
 
             </div>
 
             {/* نصوص الوصف */}
-            <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-              <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+            <div className="p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-xs sm:text-sm leading-relaxed">
                 {item.descriptionPoints3.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}
@@ -2511,8 +2513,8 @@ const seftiy = {
             </div>
           </div>
 
-          {/* أزرار الفلاتر */}
-        <div className="flex flex-wrap gap-3 mt-6">
+          {/* أزرار الفلاتر - تحسين للهواتف */}
+        <div className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6">
 {[
   { key: "specifics2", label: "جميع نقاط الفحص" },
 
@@ -2531,7 +2533,7 @@ const seftiy = {
   <button
     key={btn.key}
     onClick={() => setFilterr1(btn.key)}
-    className={`px-4 py-2 rounded transition-colors duration-200 ${
+    className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded transition-colors duration-200 text-xs sm:text-sm ${
       Filterr1 === btn.key
         ? "bg-blue-500 text-white dark:bg-blue-600"
         : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -2550,17 +2552,17 @@ const seftiy = {
   const cols = [src.slice(0, mid), src.slice(mid)];
 
   return (
-    <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+    <div className="mt-6 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-8 lg:gap-x-16 gap-y-4 sm:gap-y-6 lg:gap-y-10">
       {cols.map((col, colIdx) => (
-        <div key={colIdx} className="space-y-6">
+        <div key={colIdx} className="space-y-3 sm:space-y-6">
           {col.map((row, i) => {
             const stat = row.stats ?? row.Stats ?? "";
 
             return (
               <div key={`${colIdx}-${i}`} className="pb-3">
                 {/* السطر الأساسي */}
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3 relative">
+                <div className="flex justify-between items-center flex-wrap gap-2">
+                  <div className="flex items-center gap-2 sm:gap-3 relative flex-1 min-w-0">
                     {row.info && (
                       <button
                         onClick={(e) => {
@@ -2569,23 +2571,23 @@ const seftiy = {
                             openInfoIndex === `${colIdx}-${i}` ? null : `${colIdx}-${i}`
                           );
                         }}
-                        className="text-blue-600 hover:text-blue-800 dark:text-white text-base relative"
+                        className="text-blue-600 hover:text-blue-800 dark:text-white text-sm sm:text-base relative flex-shrink-0"
                       >
-                        <FaInfoCircle size={20} />
+                        <FaInfoCircle size={16} className="sm:w-5 sm:h-5" />
                         {openInfoIndex === `${colIdx}-${i}` && (
-                          <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
+                          <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-48 sm:w-64 z-10">
                             {row.info}
                           </div>
                         )}
                       </button>
                     )}
-                    <span className="text-black dark:text-white text-base font-medium">
+                    <span className="text-black dark:text-white text-sm sm:text-base font-medium break-words">
                       {row.label}
                     </span>
                   </div>
 
                   <span
-                    className={`font-bold text-base ${
+                    className={`font-bold text-sm sm:text-base flex-shrink-0 ${
                       stat === "✅" || stat === "✔️"
                         ? "text-green-500"
                         : stat === "⚠️"
@@ -2599,8 +2601,8 @@ const seftiy = {
 
                 {/* عرض القياسات التفصيلية */}
                 {row.measurements && (
-                  <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="mt-2 p-2 sm:p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
                       <div>
                         <span className="text-gray-600 dark:text-gray-400">القياس الفعلي:</span>
                         <span className="font-semibold text-gray-800 dark:text-gray-200 mr-2">
@@ -2641,12 +2643,12 @@ const seftiy = {
 
                 {/* عرض مناطق الصدأ المتأثرة */}
                 {row.affectedAreas && (
-                  <div className="mt-2 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                    <div className="text-sm">
+                  <div className="mt-2 p-2 sm:p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                    <div className="text-xs sm:text-sm">
                       <span className="text-orange-700 dark:text-orange-300 font-semibold">المناطق المتأثرة:</span>
                       <ul className="list-disc list-inside mt-1 text-orange-600 dark:text-orange-400">
                         {row.affectedAreas.map((area, idx) => (
-                          <li key={idx}>{area}</li>
+                          <li key={idx} className="break-words">{area}</li>
                         ))}
                       </ul>
                       {row.severity && (
@@ -2660,7 +2662,7 @@ const seftiy = {
                       {row.recommendation && (
                         <div className="mt-2">
                           <span className="text-orange-700 dark:text-orange-300 font-semibold">التوصية:</span>
-                          <span className="mr-2 text-orange-600 dark:text-orange-400">{row.recommendation}</span>
+                          <span className="mr-2 text-orange-600 dark:text-orange-400 break-words">{row.recommendation}</span>
                         </div>
                       )}
                     </div>
@@ -2672,9 +2674,8 @@ const seftiy = {
 <div className="mt-3">
   <img
     src={row.gallery[0].src}
-
     alt={row.label}
-    className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+    className="w-24 h-18 sm:w-32 sm:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
     onClick={() =>
       setOpenGallery({ images: row.gallery, start: 0 }) 
     }
@@ -2701,11 +2702,11 @@ const seftiy = {
 )}
 
 
-<div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
+<div className="p-2 sm:p-3 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-sm sm:text-base rounded">
 {/* النصوص */}
-<ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-sm" >
+<ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-xs sm:text-sm" >
   الملاحظات:
-  <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
+  <li className="break-words">لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
 </ul>
 </div>
 
@@ -2716,7 +2717,7 @@ const seftiy = {
 ))}
 </div>
 </div>
-  <div id="نظام-التوجيه">
+<div id="نظام-التوجيه">
 <div className="space-y-5 mt-6">
 {SteeringSystemData.steeringSystem.map((item, idx) => (
   <Disclosure key={idx} >
@@ -2730,11 +2731,11 @@ const seftiy = {
         </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* صورة السيارة */}
             <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
               {SteeringSystemData.steeringSystem[0].carImages.images.map((img, i) => (
-                <img key={i} src={img} alt={`car ${i}`} />
+                <img key={i} src={img} alt={`car ${i}`} className="w-full max-w-xs md:max-w-sm h-auto object-contain" loading="lazy" />
               ))}
             </div>
 
@@ -2767,7 +2768,7 @@ const seftiy = {
 
           {/* محتوى الفلاتر */}
 {filterKeys.includes(selectedInspectionCategory) && (
-  <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+  <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-16 md:gap-y-10">
     {splitColumns.map((col, colIdx) => (
         <div key={colIdx} className="space-y-6">
           {col.map((row, i) => {
@@ -2820,7 +2821,8 @@ const seftiy = {
                     <img
                       src={row.gallery[0].src}
                       alt={row.label}
-                      className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+                      className="w-full h-40 md:w-32 md:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+                      loading="lazy"
                       onClick={() =>
                         setOpenGallery({ images: row.gallery, start: 0 }) 
                       }
@@ -2864,7 +2866,7 @@ const seftiy = {
 </div>
     </div>
 
-<div id="فحص-الطريق">
+<div id="فحص-الطريق" className="px-3 sm:px-4 md:px-0">
   <div className="space-y-5 mt-6">
   {Fixed.itimis4.map((item, idx) => (
     <Disclosure key={idx} >
@@ -2952,7 +2954,7 @@ const seftiy = {
                         >
                           <FaInfoCircle size={20} />
                           {openInfoIndex === `${colIdx}-${i}` && (
-                            <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
+                            <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-56 sm:w-64 max-w-[calc(100vw-2rem)] break-words whitespace-normal z-10">
                               {row.info}
                             </div>
                           )}
@@ -2982,7 +2984,7 @@ const seftiy = {
                       <img
                         src={row.gallery[0].src}
                         alt={row.label}
-                        className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+                        className="w-24 h-20 sm:w-28 sm:h-20 md:w-32 md:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
                         onClick={() =>
                           setOpenGallery({ images: row.gallery, start: 0 }) 
                         }
@@ -3028,178 +3030,178 @@ const seftiy = {
 </div>
   
   <div id="الأنظمة-الكهربائية-والإلكترونية">
-  <div className="space-y-5 mt-6">
-  {ElectricalSystems.itimis.map((item, idx) => (
-    <Disclosure key={idx}>
-      {({ open }) => (
-        <>
+<div className="space-y-5 mt-6">
+{ElectricalSystems.itimis.map((item, idx) => (
+  <Disclosure key={idx}>
+    {({ open }) => (
+      <>
 <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
-            <span className="font-medium">{item.title}</span>
-            <FaChevronDown
-              className={`transform transition-transform ${open ? "rotate-180" : ""}`}
-            />
-          </Disclosure.Button>
+          <span className="font-medium">{item.title}</span>
+          <FaChevronDown
+            className={`transform transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
 
-            <div className="grid grid-cols-2 gap-6 items-stretch">
-  {/* صورة السيارة */}
-  <div className="shadow rounded-lg overflow-hidden">
-    {ElectricalSystems.itimis[0].carImage.map((img, i) => (
-      <img
-        key={i}
-        src={img}
-        alt={`car ${i}`}
-        className="w-full h-full object-cover object-center"
-      />
-    ))}
-  </div>
-
-  {/* نصوص الوصف */}
-  <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-    <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
-      {item.descriptionPoints2.map((point, index) => (
-        <li key={index}>{point}</li>
-      ))}
-    </ul>
-  </div>
-</div>
-
-
-            {/* أزرار الفلاتر */}
-           <div className="flex flex-wrap gap-3 mt-6">
-  {[
-    { key: "allSystems", label: "جميع نقاط الفحص" },
-    { key: "frontLights", label: "الضوء الأمامي اليمين" },
-    { key: "rearLights", label: "الضوء الخلفي اليمين" },
-    { key: "batterySystem", label: "بطارية التشغيل 12 فولت" },
-    { key: "audioSystem", label: "الشاشة \\ الراديو الأصلي" },
-    { key: "hornSystem", label: "إختبار الزامور" },
-    { key: "wiperSystem", label: "المساحة الخلفية" },
-    { key: "sunroofSystem", label: "إختبار عمل فتحة السقف" },
-    { key: "seatSystem", label: "إختبار عمل الكراسي الكهربائية" },
-  ].map((btn) => (
-    <button
-      key={btn.key}
-      onClick={() => updateSystemFilter(btn.key)}
-      className={`px-4 py-2 rounded transition-colors duration-200 ${
-        currentSystemView === btn.key
-          ? "bg-blue-500 text-white dark:bg-blue-600"
-          : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
-      }`}
-    >
-      {btn.label}
-    </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
+{/* صورة السيارة */}
+<div className="shadow rounded-lg overflow-hidden h-48 sm:h-64 md:h-auto">
+  {ElectricalSystems.itimis[0].carImage.map((img, i) => (
+    <img
+      key={i}
+      src={img}
+      alt={`car ${i}`}
+      className="w-full h-48 sm:h-64 md:h-full object-cover object-center"
+    />
   ))}
 </div>
 
+{/* نصوص الوصف */}
+<div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+  <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+    {item.descriptionPoints2.map((point, index) => (
+      <li key={index}>{point}</li>
+    ))}
+  </ul>
+</div>
+</div>
 
-            {/* محتوى الفلاتر */}
+
+          {/* أزرار الفلاتر */}
+         <div className="flex flex-wrap gap-3 mt-6 justify-center md:justify-start">
+{[
+  { key: "allSystems", label: "جميع نقاط الفحص" },
+  { key: "frontLights", label: "الضوء الأمامي اليمين" },
+  { key: "rearLights", label: "الضوء الخلفي اليمين" },
+  { key: "batterySystem", label: "بطارية التشغيل 12 فولت" },
+  { key: "audioSystem", label: "الشاشة \\ الراديو الأصلي" },
+  { key: "hornSystem", label: "إختبار الزامور" },
+  { key: "wiperSystem", label: "المساحة الخلفية" },
+  { key: "sunroofSystem", label: "إختبار عمل فتحة السقف" },
+  { key: "seatSystem", label: "إختبار عمل الكراسي الكهربائية" },
+].map((btn) => (
+  <button
+    key={btn.key}
+    onClick={() => updateSystemFilter(btn.key)}
+    className={`px-4 py-2 rounded transition-colors duration-200 ${
+      currentSystemView === btn.key
+        ? "bg-blue-500 text-white dark:bg-blue-600"
+        : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+    }`}
+  >
+    {btn.label}
+  </button>
+))}
+</div>
+
+
+          {/* محتوى الفلاتر */}
 {["allSystems", "frontLights","rearLights","batterySystem","audioSystem","hornSystem","wiperSystem","sunroofSystem","seatSystem"].includes(currentSystemView) && (
-  (() => {
-    const src = ElectricalSystems.itimis[0]?.Power[currentSystemView] ?? [];
-    const mid = Math.ceil(src.length / 2);
-    const cols = [src.slice(0, mid), src.slice(mid)];
+(() => {
+  const src = ElectricalSystems.itimis[0]?.Power[currentSystemView] ?? [];
+  const mid = Math.ceil(src.length / 2);
+  const cols = [src.slice(0, mid), src.slice(mid)];
 
-    return (
-      <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
-        {cols.map((col, colIdx) => (
-          <div key={colIdx} className="space-y-6">
-            {col.map((row, i) => {
-              const stat = row.stats ?? row.Stats ?? "";
+  return (
+    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-8 md:gap-y-10">
+      {cols.map((col, colIdx) => (
+        <div key={colIdx} className="space-y-6">
+          {col.map((row, i) => {
+            const stat = row.stats ?? row.Stats ?? "";
 
-              return (
-                <div key={`${colIdx}-${i}`} className="pb-3">
-                  {/* السطر الأساسي */}
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-3 relative">
-                      {row.info && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setOpenInfoIndex(
-                              openInfoIndex === `${colIdx}-${i}` ? null : `${colIdx}-${i}`
-                            );
-                          }}
-                          className="text-blue-600 hover:text-blue-800 dark:text-white text-base relative"
-                        >
-                          <FaInfoCircle size={20} />
-                          {openInfoIndex === `${colIdx}-${i}` && (
-                            <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
-                              {row.info}
-                            </div>
-                          )}
-                        </button>
-                      )}
-                      <span className="text-black dark:text-white text-base font-medium">
-                        {row.label}
-                      </span>
-                    </div>
-
-                    <span
-                      className={`font-bold text-base ${
-                        stat === "✅" || stat === "✔️"
-                          ? "text-green-500"
-                          : stat === "⚠️"
-                          ? "text-yellow-500"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {stat}
+            return (
+              <div key={`${colIdx}-${i}`} className="pb-3">
+                {/* السطر الأساسي */}
+                <div className="flex justify-between items-center flex-wrap md:flex-nowrap gap-2">
+                  <div className="flex items-center gap-3 relative">
+                    {row.info && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenInfoIndex(
+                            openInfoIndex === `${colIdx}-${i}` ? null : `${colIdx}-${i}`
+                          );
+                        }}
+                        className="text-blue-600 hover:text-blue-800 dark:text-white text-base relative"
+                      >
+                        <FaInfoCircle size={20} />
+                        {openInfoIndex === `${colIdx}-${i}` && (
+                          <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
+                            {row.info}
+                          </div>
+                        )}
+                      </button>
+                    )}
+                    <span className="text-black dark:text-white text-base font-medium">
+                      {row.label}
                     </span>
                   </div>
 
-                  {/* thumbnails الصور */}
-                 {row.gallery && row.gallery.length > 0 && (
-  <div className="mt-3">
-    <img
-      src={row.gallery[0].src}
+                  <span
+                    className={`font-bold text-base ${
+                      stat === "✅" || stat === "✔️"
+                        ? "text-green-500"
+                        : stat === "⚠️"
+                        ? "text-yellow-500"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {stat}
+                  </span>
+                </div>
 
-      alt={row.label}
-      className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
-      onClick={() =>
-        setOpenGallery({ images: row.gallery, start: 0 }) 
-      }
-    />
-  </div>
+                {/* thumbnails الصور */}
+               {row.gallery && row.gallery.length > 0 && (
+<div className="mt-3">
+  <img
+    src={row.gallery[0].src}
+
+    alt={row.label}
+    className="w-24 h-20 sm:w-28 sm:h-24 md:w-32 md:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+    onClick={() =>
+      setOpenGallery({ images: row.gallery, start: 0 }) 
+    }
+  />
+</div>
 )}
 
-                </div>
-              );
-            })}
-          </div>
-        ))}
-      </div>
-    );
-  })()
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+})()
 )}
 
 
 {/* عرض FullScreenGallery لو متفتح */}
 {openGallery && (
-  <ScreenGallery
-    images={openGallery.images}
-    startIndex={openGallery.start}
-    onClose={() => setOpenGallery(null)}
-  />
+<ScreenGallery
+  images={openGallery.images}
+  startIndex={openGallery.start}
+  onClose={() => setOpenGallery(null)}
+/>
 )}
 
 
 
 <div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
-  {/* النصوص */}
+{/* النصوص */}
 <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1 text-sm" >
-    الملاحظات:
-    <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
-  </ul>
+  الملاحظات:
+  <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
+</ul>
 </div>
 
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
-  ))}
+        </Disclosure.Panel>
+      </>
+    )}
+  </Disclosure>
+))}
 </div>
 </div>
 <div id="نظام-التكيف">
@@ -3209,14 +3211,14 @@ const seftiy = {
       {({ open }) => (
         <>
 <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
-            <span className="font-medium">{item.title}</span>
+            <span className="font-medium text-sm md:text-base">{item.title}</span>
             <FaChevronDown
               className={`transform transition-transform ${open ? "rotate-180" : ""}`}
             />
           </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-           <div className="grid grid-cols-2 gap-6 items-stretch">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
   {/* صورة السيارة */}
   <div className="shadow rounded-lg overflow-hidden">
     {CoolingSystem.coolingItems[0].carInformation1.images.map((img, i) => (
@@ -3230,8 +3232,8 @@ const seftiy = {
   </div>
 
   {/* نصوص الوصف */}
-  <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-    <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+  <div className="p-3 md:p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+    <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-xs md:text-sm leading-relaxed">
       {item.descriptionPoints00.map((point, index) => (
         <li key={index}>{point}</li>
       ))}
@@ -3240,7 +3242,7 @@ const seftiy = {
 </div>
 
             {/* أزرار الفلاتر */}
-            <div className="flex flex-wrap gap-3 mt-6 ">
+            <div className="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-6">
              
              {[
   { key: "coolingSpecifics", label: "جميع نقاط الفحص" },
@@ -3256,8 +3258,8 @@ const seftiy = {
   <button
     key={btn.key}
     onClick={() => setCoolingFilter(btn.key)}
-    className={`px-4 py-2 rounded ${
-      coolingFilter=== btn.key ? "bg-blue-300 text-black dark:text-white text-base font-medium" : "bg-gray-200"
+    className={`px-2 md:px-4 py-1 md:py-2 rounded text-xs md:text-sm ${
+      coolingFilter=== btn.key ? "bg-blue-300 text-black dark:text-white font-medium" : "bg-gray-200 text-gray-700 dark:text-gray-300"
     }`}
   >
     {btn.label}
@@ -3274,9 +3276,9 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
     const cols = [src.slice(0, mid), src.slice(mid)];
 
     return (
-      <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
+      <div className="mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-16 gap-y-6 md:gap-y-10">
         {cols.map((col, colIdx) => (
-          <div key={colIdx} className="space-y-6">
+          <div key={colIdx} className="space-y-4 md:space-y-6">
             {col.map((row, i) => {
               const stat = row.stats ?? row.Stats ?? "";
 
@@ -3303,13 +3305,13 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
                           )}
                         </button>
                       )}
-                      <span className="text-black dark:text-white text-base font-medium">
+                      <span className="text-black dark:text-white text-sm md:text-base font-medium">
                         {row.label}
                       </span>
                     </div>
 
                     <span
-                      className={`font-bold text-base ${
+                      className={`font-bold text-sm md:text-base ${
                         stat === "✅" || stat === "✔️"
                           ? "text-green-500"
                           : stat === "⚠️"
@@ -3327,7 +3329,7 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
                       <img
                         src={row.gallery[0].src}
                         alt={row.label}
-                        className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+                        className="w-24 h-20 md:w-32 md:h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
                         onClick={() =>
                           setOpenGallery({ images: row.gallery, start: 0 }) 
                         }
@@ -3355,9 +3357,9 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
 
 
 
-<div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
+<div className="p-2 md:p-3 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-sm md:text-base rounded">
   {/* النصوص */}
-  <ul className="list-disc list-inside text-gray-700 space-y-1 text-sm">
+  <ul className="list-disc list-inside text-gray-700 space-y-1 text-xs md:text-sm">
     الملاحظات:
     <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
   </ul>
@@ -3372,171 +3374,173 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
 </div>
 
 
-  <div id="االمكابح-السلامه">
-  <div className="space-y-5 mt-6">
-  {seftiy.itimis7.map((item, idx) => (
-    <Disclosure key={idx} >
-      {({ open }) => (
-        <>
+ <div id="االمكابح-السلامه">
+<div className="space-y-5 mt-6">
+{seftiy.itimis7.map((item, idx) => (
+  <Disclosure key={idx} >
+    {({ open }) => (
+      <>
 <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
-            <span className="font-medium">{item.title}</span>
-            <FaChevronDown
-              className={`transform transition-transform ${open ? "rotate-180" : ""}`}
-            />
-          </Disclosure.Button>
+          <span className="font-medium">{item.title}</span>
+          <FaChevronDown
+            className={`transform transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </Disclosure.Button>
 
 <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-            <div className="grid grid-cols-2 gap-6">
-              {/* صورة السيارة */}
-              <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
-                {seftiy.itimis7[0].carInformation1.images.map((img, i) => (
-  <img key={i} src={img} alt={`car ${i}`} className="w-full h-auto object-contain" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* صورة السيارة */}
+            <div className="flex flex-col items-center justify-center p-6 shadow rounded-lg">
+              {seftiy.itimis7[0].carInformation1.images.map((img, i) => (
+<img key={i} src={img} alt={`car ${i}`} className="w-full h-auto object-contain" />
 ))}
 
-              </div>
-
-              {/* نصوص الوصف */}
-              <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
-                <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
-                  {item.descriptionPoints8.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
-            {/* أزرار الفلاتر */}
-            <div className="flex flex-wrap gap-3 mt-6 ">
-             
-             {[
-  { key: "specifics7", label: "جميع نقاط الفحص" },
-  { key: "continue7", label: "أنظمة السلامة" },
-  { key: "outline7", label: "المكابح والديسكات" },
-  { key: "onabort7", label: "براغي العجلات" },
-  { key: "allpoint7", label: "أحزمة الأمان" },
-  { key: "parent7", label: "عمر الإطارات" },
-  { key: "review7", label: "مانع الانزلاق" },
-  { key: "sheet7", label: "الأكياس الهوائية" },
-  { key: "tablet7", label: "الحالة العامة" },
+            {/* نصوص الوصف */}
+            <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200 text-sm leading-relaxed">
+                {item.descriptionPoints8.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* أزرار الفلاتر */}
+          <div className="flex flex-wrap gap-3 mt-6 ">
+           
+           {[
+{ key: "specifics7", label: "جميع نقاط الفحص" },
+{ key: "continue7", label: "أنظمة السلامة" },
+{ key: "outline7", label: "المكابح والديسكات" },
+{ key: "onabort7", label: "براغي العجلات" },
+{ key: "allpoint7", label: "أحزمة الأمان" },
+{ key: "parent7", label: "عمر الإطارات" },
+{ key: "review7", label: "مانع الانزلاق" },
+{ key: "sheet7", label: "الأكياس الهوائية" },
+{ key: "tablet7", label: "الحالة العامة" },
 ].map((btn) => (
-  <button
-    key={btn.key}
-    onClick={() => setFilterr6(btn.key)}
-    className={`px-4 py-2 rounded ${
-      Filterr6 === btn.key ? "bg-blue-300 text-black dark:text-white text-base font-medium" : "bg-gray-200"
-    }`}
-  >
-    {btn.label}
-  </button>
+<button
+  key={btn.key}
+  onClick={() => setFilterr6(btn.key)}
+  className={`px-4 py-2 rounded ${
+    Filterr6 === btn.key ? "bg-blue-300 text-black dark:text-white text-base font-medium" : "bg-gray-200"
+  }`}
+>
+  {btn.label}
+</button>
 ))}
 
-            </div>
+          </div>
 
-            {/* محتوى الفلاتر */}
+          {/* محتوى الفلاتر */}
 {["specifics7", "continue7","outline7","onabort7","allpoint7","parent7","review7","sheet7","tablet7"].includes(Filterr6) && (
-  (() => {
-    const src =seftiy.itimis7[0]?.Power[Filterr6] ?? [];
-    const mid = Math.ceil(src.length / 2);
-    const cols = [src.slice(0, mid), src.slice(mid)];
+(() => {
+  const src =seftiy.itimis7[0]?.Power[Filterr6] ?? [];
+  const mid = Math.ceil(src.length / 2);
+  const cols = [src.slice(0, mid), src.slice(mid)];
 
-    return (
-      <div className="mt-10 grid grid-cols-2 gap-x-16 gap-y-10">
-        {cols.map((col, colIdx) => (
-          <div key={colIdx} className="space-y-6">
-            {col.map((row, i) => {
-              const stat = row.stats ?? row.Stats ?? "";
+  return (
+    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-6 md:gap-y-10">
+      {cols.map((col, colIdx) => (
+        <div key={colIdx} className="space-y-6">
+          {col.map((row, i) => {
+            const stat = row.stats ?? row.Stats ?? "";
 
-              return (
-                <div key={`${colIdx}-${i}`} className="pb-3">
-                  {/* السطر الأساسي */}
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-3 relative">
-                      {row.info && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setOpenInfoIndex(
-                              openInfoIndex === `${colIdx}-${i}` ? null : `${colIdx}-${i}`
-                            );
-                          }}
-                          className="text-blue-600 hover:text-blue-800 dark:text-white text-base relative"
-                        >
-                          <FaInfoCircle size={20} />
-                          {openInfoIndex === `${colIdx}-${i}` && (
-                            <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
-                              {row.info}
-                            </div>
-                          )}
-                        </button>
-                      )}
-                      <span className="text-black dark:text-white text-base font-medium">
-                        {row.label}
-                      </span>
-                    </div>
-
-                    <span
-                      className={`font-bold text-base ${
-                        stat === "✅" || stat === "✔️"
-                          ? "text-green-500"
-                          : stat === "⚠️"
-                          ? "text-yellow-500"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {stat}
+            return (
+              <div key={`${colIdx}-${i}`} className="pb-3">
+                {/* السطر الأساسي */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3 relative">
+                    {row.info && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenInfoIndex(
+                            openInfoIndex === `${colIdx}-${i}` ? null : `${colIdx}-${i}`
+                          );
+                        }}
+                        className="text-blue-600 hover:text-blue-800 dark:text-white text-base relative"
+                      >
+                        <FaInfoCircle size={20} />
+                        {openInfoIndex === `${colIdx}-${i}` && (
+                          <div className="absolute -top-10 right-0 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg w-64 z-10">
+                            {row.info}
+                          </div>
+                        )}
+                      </button>
+                    )}
+                    <span className="text-black dark:text-white text-base font-medium">
+                      {row.label}
                     </span>
                   </div>
 
-                  {/* thumbnails الصور */}
-                  {row.gallery && row.gallery.length > 0 && (
-                    <div className="mt-3">
-                      <img
-                        src={row.gallery[0].src}
-                        alt={row.label}
-                        className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
-                        onClick={() =>
-                          setOpenGallery({ images: row.gallery, start: 0 }) 
-                        }
-                      />
-                    </div>
-                  )}
+                  <span
+                    className={`font-bold text-base ${
+                      stat === "✅" || stat === "✔️"
+                        ? "text-green-500"
+                        : stat === "⚠️"
+                        ? "text-yellow-500"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {stat}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        ))}
-      </div>
-    );
-  })()
+
+                {/* thumbnails الصور */}
+                {row.gallery && row.gallery.length > 0 && (
+                  <div className="mt-3">
+                    <img
+                      src={row.gallery[0].src}
+                      alt={row.label}
+                      className="w-32 h-24 object-cover rounded-lg shadow cursor-pointer hover:opacity-80"
+                      onClick={() =>
+                        setOpenGallery({ images: row.gallery, start: 0 }) 
+                      }
+                    />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+})()
 )}
 
 
 {/* عرض FullScreenGallery لو متفتح */}
 {openGallery && (
-  <FullScreenGallery
-    images={openGallery.images}
-    startIndex={openGallery.start}
-    onClose={() => setOpenGallery(null)}
-  />
+<FullScreenGallery
+  images={openGallery.images}
+  startIndex={openGallery.start}
+  onClose={() => setOpenGallery(null)}
+/>
 )}
 
 
 
 <div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
-  {/* النصوص */}
-  <ul className="list-disc list-inside text-gray-700 space-y-1 text-sm">
-    الملاحظات:
-    <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
-  </ul>
+{/* النصوص */}
+<ul className="list-disc list-inside text-gray-700 space-y-1 text-sm">
+  الملاحظات:
+  <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى كارسيرفس وقت الفحص</li>
+</ul>
 </div>
 
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
-  ))}
+        </Disclosure.Panel>
+      </>
+    )}
+  </Disclosure>
+))}
 </div>
 </div>
+
+
 
 
     </div>
