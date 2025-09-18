@@ -657,19 +657,19 @@ const RoadTestComponent = memo(() => {
 
   return (
     <div id="فحص-الطريق">
-      <div className="space-y-4 sm:space-y-5 mt-4 sm:mt-6">
+      <div className="space-y-4 mt-6">
         {roadTestData.roadTestItems.map((item, idx) => (
           <Disclosure key={idx} >
             {({ open }) => (
               <>
-                <Disclosure.Button className="w-full flex justify-between items-center px-3 sm:px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
+                <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200">
                   <span className="font-medium text-sm sm:text-base">{item.title}</span>
                   <FaChevronDown
                     className={`transform transition-transform ${open ? "rotate-180" : ""} w-4 h-4 sm:w-5 sm:h-5`}
                   />
                 </Disclosure.Button>
 
-                <Disclosure.Panel className="px-3 sm:px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                <Disclosure.Panel className="px-4 py-2 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-stretch">
   {/* صورة السيارة */}
   <div className="shadow rounded-lg overflow-hidden">

@@ -1462,355 +1462,356 @@ const seftiy = {
 
       <h1 className="text-black dark:text-white text-2xl font-bold mb-6">تقرير فحص السيارة</h1>
 
-      <div className="space-y-4">
-        {reportData.sections.map((section, idx) => (
-          <Disclosure key={idx} defaultOpen>
-            {({ open }) => (
-              <>
-                <Disclosure.Button className=" w-full flex justify-between items-center px-4 py-2
-    bg-white dark:bg-gray-800
-    rounded-md shadow
-    hover:bg-gray-100 dark:hover:bg-gray-700
-    text-gray-800 dark:text-gray-200
-  ">
-                  <span className="text-black dark:text-white font-medium">{section.title}</span>
-                  <FaChevronDown
-                    className={`transform transition-transform ${
-                      open ? "rotate-180" : ""
-                    }`}
-                  />
-                </Disclosure.Button>
+     <div className="space-y-4">
+{reportData.sections.map((section, idx) => (
+  <Disclosure key={idx} defaultOpen>
+    {({ open }) => (
+      <>
+        <Disclosure.Button className="w-full flex justify-between items-center px-4 py-2 sm:px-4 sm:py-2
+bg-white dark:bg-gray-800
+rounded-md shadow
+hover:bg-gray-100 dark:hover:bg-gray-700
+text-gray-800 dark:text-gray-200
+">
+          <span className="text-black dark:text-white font-medium text-sm sm:text-base">{section.title}</span>
+          <FaChevronDown
+            className={`transform transition-transform ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </Disclosure.Button>
 
-                <Disclosure.Panel className="px-4 py-2  bg-white dark:bg-black rounded-b-md border border-t-0 border-gray-200">
-                
-                  {section.type === "details" ? (
-                    <div className="space-y-6">
-  {/* مربعات المعلومات */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-    <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-black border border-gray-100 dark:border-white shadow rounded-lg h-auto sm:h-60">
+        <Disclosure.Panel className="px-2 py-2 sm:px-4 sm:py-2 bg-white dark:bg-black rounded-b-md border border-t-0 border-gray-200">
+        
+          {section.type === "details" ? (
+            <div className="space-y-6">
+{/* مربعات المعلومات */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+<div className="flex flex-col items-center justify-center p-3 sm:p-6 bg-white dark:bg-black border border-gray-100 dark:border-white shadow rounded-lg h-auto sm:h-60">
 
-  {/* اسم الماركة */}
- 
+{/* اسم الماركة */}
 
-  {/* الموديل */}
-  <span className="text-black dark:text-white text-lg font-semibold text-gray-700 mt-1">
-    {section.carInfo.model || "Song Plus 605KM Flagship"}
-  </span>
 
-  
+{/* الموديل */}
+<span className="text-black dark:text-white text-sm sm:text-lg font-semibold text-gray-700 mt-1">
+{section.carInfo.model || "Song Plus 605KM Flagship"}
+</span>
+
+
 </div>
 
 {/* البوكس العنوان */}
-<div className="p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded text-center">
-  {/* اسم العربية */}
-  <h2 className="text-black dark:text-white text-xl font-semibold text-gray-900 mb-4">
-    {section.carInfo.title || "BYD Song Plus 605KM Flagship 2023"}
-  </h2>
+<div className="p-3 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded text-center">
+{/* اسم العربية */}
+<h2 className="text-black dark:text-white text-base sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-4">
+{section.carInfo.title || "BYD Song Plus 605KM Flagship 2023"}
+</h2>
 
-  {/* السطر اللي فيه رقم التقرير يمين ورقم الشاسيه شمال */}
-  <div className="flex justify-between mt-4  text-black dark:text-white text-base ">
-    <div className="text-right">
-      <span className="block text-sm text-gray-600 text-black dark:text-white">رقم التقرير</span>
-      <h3 className=" text-black dark:text-white font-semibold text-gray-800">
-        {section.carInfo.reportNumber || "RPT-2025-001"}
-      </h3>
-    </div>
-    <div className="text-left">
-      <h3 className="font-semibold text-gray-800 text-black dark:text-white ">
-        {section.carInfo.chassisNumber || "BYDSONGPLUS2023BY"}
-      </h3>
-    </div>
-  </div>
+{/* السطر اللي فيه رقم التقرير يمين ورقم الشاسيه شمال */}
+<div className="flex flex-col sm:flex-row justify-between mt-2 sm:mt-4 text-black dark:text-white text-sm sm:text-base space-y-2 sm:space-y-0">
+<div className="text-right">
+<span className="block text-xs sm:text-sm text-gray-600 text-black dark:text-white">رقم التقرير</span>
+<h3 className="text-black dark:text-white font-semibold text-gray-800 text-sm sm:text-base">
+{section.carInfo.reportNumber || "RPT-2025-001"}
+</h3>
+</div>
+<div className="text-left">
+<span className="block text-xs sm:text-sm text-gray-600 text-black dark:text-white">رقم الشاسيه</span>
+<h3 className="font-semibold text-gray-800 text-black dark:text-white text-sm sm:text-base">
+{section.carInfo.chassisNumber || "BYDSONGPLUS2023BY"}
+</h3>
+</div>
+</div>
 </div>
 
-     {/* اسم الماركة */}
+{/* اسم الماركة */}
 
-<div className="flex flex-col items-center p-6bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg h-60">
-      <img
-        src={section.carInfo.image}
-        alt="Car"
-        className="w-28 h-28 object-cover rounded mb-3"
-      />
-      <span className="text-black dark:text-white text-base font-semibold">صورة السيارة</span>
-    </div>
+<div className="flex flex-col items-center p-3 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg h-auto sm:h-60">
+<img
+src={section.carInfo.image}
+alt="Car"
+className="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded mb-2 sm:mb-3"
+/>
+<span className="text-black dark:text-white text-sm sm:text-base font-semibold">صورة السيارة</span>
+</div>
 </div>
 
 
-                      <div className="grid grid-cols-3 gap-4">
-                    <div className="p-6 flex flex-col items-start bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
-  {/* زر المعلومات */}
-  <button
-    className="mb-4 w-10 h-10 flex items-center justify-center bg-white dark:bg-black border border-black dark:border-white  rounded-full border border-gray-300 shadow hover:bg-gray-100"
-    onClick={() => setShowInfo(!showInfo)}
-  >
-    <FaInfoCircle className="text-blue-500 text-xl" />
-  </button>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div className="p-3 sm:p-6 flex flex-col items-start bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
+{/* زر المعلومات */}
+<button
+className="mb-2 sm:mb-4 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-white dark:bg-black border border-black dark:border-white rounded-full border border-gray-300 shadow hover:bg-gray-100"
+onClick={() => setShowInfo(!showInfo)}
+>
+<FaInfoCircle className="text-blue-500 text-lg sm:text-xl" />
+</button>
 
-  {/* جدول المعلومات */}
-  {showInfo && (
-    <div className="mb-4 bg-white shadow-lg border rounded-lg p-4 w-full">
-      <table className="table-auto border-collapse border border-gray-300 w-full text-center">
-        <thead>
-          <tr>
-            <th className="border border-gray-300 px-3 py-1">Grade</th>
-            <th className="border border-gray-300 px-3 py-1">Range</th>
-          </tr>
-        </thead>
-        <tbody>
-          {grades.map((g) => (
-            <tr key={g.label}>
-              <td
-                className={`border border-gray-300 px-3 py-1 font-bold ${g.color.replace(
-                  "bg",
-                  "text"
-                )}`}
-              >
-                {g.label}
-              </td>
-              <td className="border border-gray-300 px-3 py-1">
-                {g.range[0]}% - {g.range[1]}%
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )}
-
-  {/* الجوج */}
-  <GaugeChart
-    id="gauge-chart"
-    nrOfLevels={20}
-    colors={["#ef4444", "#f97316", "#eab308", "#22c55e"]}
-    arcWidth={0.3}
-    percent={score / 100}
-    textColor="#000000"
-  />
-
-  {/* القيمة */}
-  <div className="text-2xl font-bold mt-2">
-    <span
-      className={currentGrade ? currentGrade.color.replace("bg", "text") : ""}
-    >
-      {score}%
-    </span>
-  </div>
-</div>
-                        {/* النتيجة مع الأيقونة */}
-                       <div className="flex flex-col items-center justify-center p-2 bg-white shadow rounded  bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
-  {section.inspection.status === "success" ? (
-    <>
-      <FaCheckCircle className="text-green-500 text-3xl" />
-      <span className="font-bold text-green-600">ناجحة</span>
-    </>
-  ) : section.inspection.status === "fail" ? (
-    <>
-<div className="w-24 h-24 flex items-center justify-center rounded-full bg-white border-4 border-black text-red-600 font-seimbold text-7xl shadow-md">
-  
-        F
-      </div>
-      <span className="mt-2 text-red-600 font-semibold">غير ناجحة</span>
-      <button
-        onClick={() => setShowReasons(true)}
-        className="mt-1 text-sm text-gray-600 underline"
+{/* جدول المعلومات */}
+{showInfo && (
+<div className="mb-2 sm:mb-4 bg-white shadow-lg border rounded-lg p-2 sm:p-4 w-full">
+<table className="table-auto border-collapse border border-gray-300 w-full text-center text-xs sm:text-sm">
+<thead>
+  <tr>
+    <th className="border border-gray-300 px-3 py-1">Grade</th>
+    <th className="border border-gray-300 px-3 py-1">Range</th>
+  </tr>
+</thead>
+<tbody>
+  {grades.map((g) => (
+    <tr key={g.label}>
+      <td
+        className={`border border-gray-300 px-3 py-1 font-bold ${g.color.replace(
+          "bg",
+          "text"
+        )}`}
       >
-        عرض الأسباب
-      </button>
-    </>
-  ) : section.inspection.status === "pass" ? (
-    <div className="flex items-center space-x-2 text-green-600">
-      <FaCheckCircle className="text-3xl" />
-      <span>ناجحة</span>
-    </div>
-  ) : (
-    <span>-</span>
-  )}
+        {g.label}
+      </td>
+      <td className="border border-gray-300 px-3 py-1">
+        {g.range[0]}% - {g.range[1]}%
+      </td>
+    </tr>
+  ))}
+</tbody>
+</table>
+</div>
+)}
+
+{/* الجوج */}
+<GaugeChart
+id="gauge-chart"
+nrOfLevels={20}
+colors={["#ef4444", "#f97316", "#eab308", "#22c55e"]}
+arcWidth={0.3}
+percent={score / 100}
+textColor="#000000"
+/>
+
+{/* القيمة */}
+<div className="text-lg sm:text-2xl font-bold mt-2">
+<span
+className={currentGrade ? currentGrade.color.replace("bg", "text") : ""}
+>
+{score}%
+</span>
+</div>
+</div>
+                {/* النتيجة مع الأيقونة */}
+               <div className="flex flex-col items-center justify-center p-2 sm:p-4 bg-white shadow rounded bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
+{section.inspection.status === "success" ? (
+<>
+<FaCheckCircle className="text-green-500 text-2xl sm:text-3xl" />
+<span className="font-bold text-green-600 text-sm sm:text-base">ناجحة</span>
+</>
+) : section.inspection.status === "fail" ? (
+<>
+<div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center rounded-full bg-white border-4 border-black text-red-600 font-bold text-4xl sm:text-7xl shadow-md">
+
+F
+</div>
+<span className="mt-2 text-red-600 font-semibold text-sm sm:text-base">غير ناجحة</span>
+<button
+onClick={() => setShowReasons(true)}
+className="mt-1 text-xs sm:text-sm text-gray-600 underline"
+>
+عرض الأسباب
+</button>
+</>
+) : section.inspection.status === "pass" ? (
+<div className="flex items-center space-x-2 text-green-600">
+<FaCheckCircle className="text-2xl sm:text-3xl" />
+<span className="text-sm sm:text-base">ناجحة</span>
+</div>
+) : (
+<span className="text-sm sm:text-base">-</span>
+)}
 </div>
 
-<div className="relative flex flex-col items-center justify-center p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
-  {/* الصورة */}
-  <img
-    src={image55}
-    alt="car"
-    className="w-20 h-20 rounded-full object-cover"
-  />
+<div className="relative flex flex-col items-center justify-center p-3 sm:p-6 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
+{/* الصورة */}
+<img
+src={image55}
+alt="car"
+className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover"
+/>
 
-  <span className="mt-3 text-lg font-bold">القيمة التسويقية</span>
-</div>
-
-
-                      </div>
-      {/* تقرير الفحص */}
-<div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg p-6 space-y-6">
-
-  {/* عنوان القسم */}
-  <h2 className="text-xl font-bold text-gray-900 border-b pb-2 dark:text-white">
-    معلومات التقرير
-  </h2>
-
-  {/* جدول معلومات التقرير */}
-  <div className="grid grid-cols-2 gap-x-8  text-base dark:text-white">
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">التاريخ</span>
-      <span className="font-semibold dark:text-white">Dec 31, 2024</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">رقم التقرير</span>
-      <span className="font-semibold dark:text-white">10311224033</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">نوع الفحص</span>
-      <span className="font-semibold dark:text-white">الفحص الشامل</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">فرع الفحص</span>
-      <span className="font-semibold dark:text-white ">البيادر</span>
-    </div>
-  </div>
-
-  {/* عنوان القسم */}
-  <h2 className="text-xl font-bold text-gray-900 border-b pb-2 mt-6 dark:text-white">
-    معلومات المركبة
-  </h2>
-
-  {/* جدول معلومات المركبة */}
-  <div className="grid grid-cols-2 gap-x-8 text-base dark:text-white">
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">النوع</span>
-      <span className="font-semibold">BYD</span>
-    </div>
-    <div className="flex justify-between border-b py-2 dark:text-white">
-      <span className="text-gray-600 font-semibold">الموديل</span>
-      <span className="font-semibold dark:text-white">Song Plus</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600font-semibold dark:text-white">الفئة</span>
-      <span className="font-semibold dark:text-white">605KM Flagship</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">سنة الصنع</span>
-      <span className="font-semibold dark:text-white">2023</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">سعة المحرك</span>
-      <span className="font-semibold dark:text-white">-</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">العداد الحالي</span>
-      <span className="font-semibold">5007 KM</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">رقم اللوحة</span>
-      <span className="font-semibold dark:text-white">FREEZONE</span>
-    </div>
-    <div className="flex justify-between border-b py-2">
-      <span className="text-gray-600 font-semibold dark:text-white">لون السيارة</span>
-      <span className="font-semibold dark:text-white">فيراني</span>
-    </div>
-   <div className="grid grid-cols-2 border-b py-2 col-span-2">
-  {/* العنوان */}
-  <span className="text-gray-600 font-semibold dark:text-white">نوع المحرك</span>
-
-  {/* القيمة */}
-  <span className="font-semibold text-gray-900 dark:text-white">Electric</span>
+<span className="mt-2 sm:mt-3 text-sm sm:text-lg font-bold">القيمة التسويقية</span>
 </div>
 
 
-    
-  </div>
+              </div>
+{/* تقرير الفحص */}
+<div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg p-3 sm:p-6 space-y-4 sm:space-y-6">
+
+{/* عنوان القسم */}
+<h2 className="text-lg sm:text-xl font-bold text-gray-900 border-b pb-2 dark:text-white">
+معلومات التقرير
+</h2>
+
+{/* جدول معلومات التقرير */}
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 sm:gap-x-8 text-sm sm:text-base dark:text-white">
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">التاريخ</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">Dec 31, 2024</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">رقم التقرير</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">10311224033</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">نوع الفحص</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">الفحص الشامل</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">فرع الفحص</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">البيادر</span>
+</div>
+</div>
+
+{/* عنوان القسم */}
+<h2 className="text-lg sm:text-xl font-bold text-gray-900 border-b pb-2 mt-4 sm:mt-6 dark:text-white">
+معلومات المركبة
+</h2>
+
+{/* جدول معلومات المركبة */}
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 sm:gap-x-8 text-sm sm:text-base dark:text-white">
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">النوع</span>
+<span className="font-semibold text-xs sm:text-sm">BYD</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2 dark:text-white">
+<span className="text-gray-600 font-semibold text-xs sm:text-sm">الموديل</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">Song Plus</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">الفئة</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">605KM Flagship</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">سنة الصنع</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">2023</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">سعة المحرك</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">-</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">العداد الحالي</span>
+<span className="font-semibold text-xs sm:text-sm">5007 KM</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">رقم اللوحة</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">FREEZONE</span>
+</div>
+<div className="flex justify-between border-b py-1 sm:py-2">
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">لون السيارة</span>
+<span className="font-semibold dark:text-white text-xs sm:text-sm">فيراني</span>
+</div>
+<div className="grid grid-cols-1 sm:grid-cols-2 border-b py-1 sm:py-2 col-span-1 sm:col-span-2">
+{/* العنوان */}
+<span className="text-gray-600 font-semibold dark:text-white text-xs sm:text-sm">نوع المحرك</span>
+
+{/* القيمة */}
+<span className="font-semibold text-gray-900 dark:text-white text-xs sm:text-sm">Electric</span>
+</div>
+
+
+
+</div>
 </div>
 {/* قسم الإضافات */}
-<div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg">
-  <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white ">الإضافات</h3>
+<div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg p-3 sm:p-4">
+<h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white">الإضافات</h3>
 
-  <div className="flex flex-wrap gap-2">
-    {[
-      "شحن لاسلكي",
-      "كراسي مبردة",
-      "كراسي مدفئة",
-      "كراسي جلد",
-      "شاشة أمامية",
-      "عدادات ديجيتال",
-      "الدخول بدون مفتاح (بصمة)",
-      "تتبع المسار",
-      "النقطة العمياء",
-      "أضوية LED",
-      "كاميرا خلفية",
-      "كاميرا 360 درجة",
-      "سقف بانوراما",
-      "نظام صوتي",
-      "تحكم ستيرنج",
-      "مثبت سرعة",
-      "حساسات أمامية",
-      "حساسات خلفية",
-      "بصمة تشغيل",
-      "نظام الرادار",
-      "تنبيه التصادم",
-      "كراسي كهربائي",
-    ].map((item, index) => {
-      return (
-        <div
-          key={index}
-          className="flex items-center border border-red-500 rounded-full px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-white"
-        >
-          <span className="text-gray-700 dark:text-white text-xs mr-1">✓</span>
-          {item}
-        </div>
-      );
-    })}
-  </div>
+<div className="flex flex-wrap gap-2">
+{[
+"شحن لاسلكي",
+"كراسي مبردة",
+"كراسي مدفئة",
+"كراسي جلد",
+"شاشة أمامية",
+"عدادات ديجيتال",
+"الدخول بدون مفتاح (بصمة)",
+"تتبع المسار",
+"النقطة العمياء",
+"أضوية LED",
+"كاميرا خلفية",
+"كاميرا 360 درجة",
+"سقف بانوراما",
+"نظام صوتي",
+"تحكم ستيرنج",
+"مثبت سرعة",
+"حساسات أمامية",
+"حساسات خلفية",
+"بصمة تشغيل",
+"نظام الرادار",
+"تنبيه التصادم",
+"كراسي كهربائي",
+].map((item, index) => {
+return (
+<div
+  key={index}
+  className="flex items-center border border-red-500 rounded-full px-1.5 sm:px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-white"
+>
+  <span className="text-gray-700 dark:text-white text-xs mr-1">✓</span>
+  <span className="text-xs">{item}</span>
+</div>
+);
+})}
+</div>
 </div>
 {/* */}
-   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-  {inspections.map((item, idx) => (
-    <div 
-      key={idx} 
-      onClick={() => {
-        const sectionId = item.name.replace(/\s+/g, "-"); // يحول الاسم لـ id
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }}
-      className="flex items-center justify-between p-3 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg"
-    >
-      {/* الأيقون + الاسم */}
-      <div className="flex items-center gap-2 text-gray-800">
-        <span className="text-xl text-blue-600   ">{item.icon || <FaCarSide />}</span>
-        <span className="text-base font-medium dark:text-white ">{item.name}</span>
-      </div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+{inspections.map((item, idx) => (
+<div 
+key={idx} 
+onClick={() => {
+const sectionId = item.name.replace(/\s+/g, "-"); // يحول الاسم لـ id
+const section = document.getElementById(sectionId);
+if (section) {
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+}}
+className="flex items-center justify-between p-2 sm:p-3 bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg"
+>
+{/* الأيقون + الاسم */}
+<div className="flex items-center gap-2 text-gray-800">
+<span className="text-lg sm:text-xl text-blue-600">{item.icon || <FaCarSide />}</span>
+<span className="text-sm sm:text-base font-medium dark:text-white">{item.name}</span>
+</div>
 
-      {/* المثلث الملون */}
-      <span
-        className={`w-0 h-0 border-l-[10px] border-y-[6px] border-y-transparent ${getStatusColor(item.status)}`}
-      ></span>
-    </div>
-  ))}
+{/* المثلث الملون */}
+<span
+className={`w-0 h-0 border-l-[10px] border-y-[6px] border-y-transparent ${getStatusColor(item.status)}`}
+></span>
+</div>
+))}
 </div>
 
 
-                      {/* تفاصيل التقرير */}
-                      <div className=" bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg divide-y">
-                        {section.inspection.details.map((item, i) => (
-                          <div key={i} className="p-2 flex justify-between">
-                            <span className="font-medium">{item.label}</span>
-                            <span>{item.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <p>{section.content}</p>
-                  )}
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-        ))}
-      
-   
-      </div>
-      
+              {/* تفاصيل التقرير */}
+              <div className="bg-white dark:bg-black border border-white dark:border-white shadow rounded-lg divide-y">
+                {section.inspection.details.map((item, i) => (
+                  <div key={i} className="p-2 sm:p-3 flex justify-between">
+                    <span className="font-medium text-sm sm:text-base">{item.label}</span>
+                    <span className="text-sm sm:text-base">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p>{section.content}</p>
+          )}
+        </Disclosure.Panel>
+      </>
+    )}
+  </Disclosure>
+))}
+
+
+</div>
+
 
       {/* نافذة الأسباب */}
       {showReasons && (
@@ -1843,10 +1844,7 @@ const seftiy = {
           <Disclosure key={idx}>
             {({ open }) => (
               <>
-                <Disclosure.Button className=" w-full flex justify-between items-center px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow
-
-                   hover:bg-gray-100 dark:hover:bg-gray-700
-            text-gray-800 dark:text-gray-200">
+                <Disclosure.Button className="w-full flex justify-between items-center px-3 md:px-4 py-2 bg-white dark:bg-gray-800 rounded-md shadow hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm md:text-base">
 
   
                   <span className="font-medium dark:text-whit">{itemes.title}</span>
@@ -1856,24 +1854,24 @@ const seftiy = {
                     }`}
                   />
                 </Disclosure.Button>
-<Disclosure.Panel className="px-4 py-2 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700" >
+<Disclosure.Panel className="px-3 md:px-4 py-2 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700" >
 
                   {/* لو القسم تفاصيل */}
                   {itemes.type === "details" ? (
-                    <div className="space-y-10">
+                    <div className="space-y-6 md:space-y-10">
   {/* مربعات المعلومات */}
-  <div className="grid grid-cols-2 gap-6">
-    <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded-lg" >
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+    <div className="flex flex-col items-center justify-center p-4 md:p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded-lg" >
 
   {/* صورة السيارة */}
   <img
     src={itemes.carInfoo.image}
     alt="Car"
-    className="w-100 h-100 object-contain mx-auto rounded-lg"
+    className="w-full max-w-xs md:w-100 md:h-100 object-contain mx-auto rounded-lg"
   />
 </div>
 {/* البوكس العنوان */}
-<div className="p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded text-center" >
+<div className="p-4 md:p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow rounded text-center" >
 
   {/*النصوص*/}
   <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-2" >
@@ -1885,10 +1883,10 @@ const seftiy = {
 </div>         
       
 
-<div className="flex gap-2 mb-4">
+<div className="flex flex-wrap gap-2 mb-4">
   <button 
     onClick={() => setActiveFilter("details")}
-    className={`px-4 py-2 rounded transition-colors duration-200 ${
+    className={`px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded transition-colors duration-200 ${
       activeFilter === "details" 
         ? "bg-blue-500 text-white dark:bg-blue-600" 
         : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -1899,7 +1897,7 @@ const seftiy = {
 
   <button 
     onClick={() => setActiveFilter("registration")}
-    className={`px-4 py-2 rounded transition-colors duration-200 ${
+    className={`px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded transition-colors duration-200 ${
       activeFilter === "registration" 
         ? "bg-blue-500 text-white dark:bg-blue-600" 
         : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -1910,7 +1908,7 @@ const seftiy = {
 
   <button 
     onClick={() => setActiveFilter("maintenance")}
-    className={`px-4 py-2 rounded transition-colors duration-200 ${
+    className={`px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded transition-colors duration-200 ${
       activeFilter === "maintenance" 
         ? "bg-blue-500 text-white dark:bg-blue-600" 
         : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -1921,7 +1919,7 @@ const seftiy = {
 
   <button 
     onClick={() => setActiveFilter("mileage")}
-    className={`px-4 py-2 rounded transition-colors duration-200 ${
+    className={`px-3 py-2 text-sm md:px-4 md:py-2 md:text-base rounded transition-colors duration-200 ${
       activeFilter === "mileage" 
         ? "bg-blue-500 text-white dark:bg-blue-600" 
         : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -1934,7 +1932,7 @@ const seftiy = {
 {/* الجدول */}
 
 {activeFilter === "details" && 
-  <div className="grid grid-cols-2 gap-4">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
     {(() => {
       let sections = [];
       let currentSection = { title: "", items: [] };
@@ -1957,13 +1955,13 @@ const seftiy = {
 
       return sections.map((section, idx) => (
         <div key={idx} className="border p-2">
-<div className="font-bold text-gray-700 dark:text-gray-200 mb-2">{section.title}</div>
+<div className="font-bold text-gray-700 dark:text-gray-200 mb-2 text-sm md:text-base">{section.title}</div>
           <div className="space-y-1">
             {section.items.map((row, i) => (
-              <div key={i} className="flex justify-between border-b py-2 px-2 text-sm items-center">
-                <span className="w-32">{row.label}</span>
-                <span className="w-32">{row.value}</span>
-                <span className={`w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
+              <div key={i} className="flex flex-col md:flex-row md:justify-between border-b py-2 px-2 text-xs md:text-sm items-start md:items-center gap-1 md:gap-0">
+                <span className="w-full md:w-32 font-medium">{row.label}</span>
+                <span className="w-full md:w-32">{row.value}</span>
+                <span className={`w-full md:w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
                   {row.status || ""}
                 </span>
               </div>
@@ -1996,16 +1994,16 @@ const seftiy = {
   if (currentSection.items.length > 0) sections.push(currentSection);
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {sections.map((section, idx) => (
         <div key={idx} className="border p-2">
-<div className="font-bold text-gray-700 dark:text-gray-200 mb-2">{section.title}</div>
+<div className="font-bold text-gray-700 dark:text-gray-200 mb-2 text-sm md:text-base">{section.title}</div>
           <div className="space-y-1">
             {section.items.map((row, i) => (
-              <div key={i} className="flex justify-between border-b py-2 px-2 text-sm items-center">
-                <span className="w-32">{row.label}</span>
-                <span className="w-32">{row.value}</span>
-                <span className={`w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
+              <div key={i} className="flex flex-col md:flex-row md:justify-between border-b py-2 px-2 text-xs md:text-sm items-start md:items-center gap-1 md:gap-0">
+                <span className="w-full md:w-32 font-medium">{row.label}</span>
+                <span className="w-full md:w-32">{row.value}</span>
+                <span className={`w-full md:w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
                   {row.status || ""}
                 </span>
               </div>
@@ -2038,16 +2036,16 @@ const seftiy = {
   if (currentSection.items.length > 0) sections.push(currentSection);
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {sections.map((section, idx) => (
         <div key={idx} className="border p-2">
-<div className="font-bold text-gray-700 dark:text-gray-200 mb-2">{section.title}</div>
+<div className="font-bold text-gray-700 dark:text-gray-200 mb-2 text-sm md:text-base">{section.title}</div>
           <div className="space-y-1">
             {section.items.map((row, i) => (
-              <div key={i} className="flex justify-between border-b py-2 px-2 text-sm items-center">
-                <span className="w-32">{row.label}</span>
-                <span className="w-32">{row.value}</span>
-                <span className={`w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
+              <div key={i} className="flex flex-col md:flex-row md:justify-between border-b py-2 px-2 text-xs md:text-sm items-start md:items-center gap-1 md:gap-0">
+                <span className="w-full md:w-32 font-medium">{row.label}</span>
+                <span className="w-full md:w-32">{row.value}</span>
+                <span className={`w-full md:w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
                   {row.status || ""}
                 </span>
               </div>
@@ -2081,16 +2079,16 @@ const seftiy = {
   if (currentSection.items.length > 0) sections.push(currentSection);
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {sections.map((section, idx) => (
         <div key={idx} className="border p-2">
-<div className="font-bold text-gray-700 dark:text-gray-200 mb-2">{section.title}</div>
+<div className="font-bold text-gray-700 dark:text-gray-200 mb-2 text-sm md:text-base">{section.title}</div>
           <div className="space-y-1">
             {section.items.map((row, i) => (
-              <div key={i} className="flex justify-between border-b py-2 px-2 text-sm items-center">
-                <span className="w-32">{row.label}</span>
-                <span className="w-32">{row.value}</span>
-                <span className={`w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
+              <div key={i} className="flex flex-col md:flex-row md:justify-between border-b py-2 px-2 text-xs md:text-sm items-start md:items-center gap-1 md:gap-0">
+                <span className="w-full md:w-32 font-medium">{row.label}</span>
+                <span className="w-full md:w-32">{row.value}</span>
+                <span className={`w-full md:w-10 font-semibold ${row.status === "✅" ? "text-green-500" : "text-red-500"}`}>
                   {row.status || ""}
                 </span>
               </div>
@@ -2104,12 +2102,12 @@ const seftiy = {
 
 <div className=" mb-4">
   {/* العنوان */}
-  <div className="text-center p-2 rounded  dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-lg mb-2">
+  <div className="text-center p-2 rounded  dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base md:text-lg mb-2">
     أماكن الضرر حسب تقرير الكروكا
   </div>
 
   {/* بوكس الصورة */}
-  <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg max-w-md mx-auto">
+  <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg max-w-sm md:max-w-md mx-auto">
     <img
       src={itemes.check.carIamge} 
       alt="Car"
@@ -2118,9 +2116,9 @@ const seftiy = {
   </div>
 </div>
 
-<div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-base rounded">
+<div className="p-2 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-bold text-sm md:text-base rounded">
   {/* النصوص */}
-  <ul className="list-disc list-inside text-gray-700  dark:text-gray-100 space-y-1 text-sm">
+  <ul className="list-disc list-inside text-gray-700  dark:text-gray-100 space-y-1 text-xs md:text-sm">
     الملاحظات:
     <li>لم يتم التأكد من قراءة العداد الحالية لعدم توفر مصادر موثوقة لدى اوتوسكور وقت الفحص</li>
   </ul>
@@ -2303,7 +2301,7 @@ const seftiy = {
 
 {/*الشاصي والهيكل */}
 <div id="الشاصي-والهيكل">
-  <div className="space-y-5 mt-6">
+  <div className="space-y-4 mt-6">
   {Chassisa.itimis.map((item, idx) => (
     <Disclosure key={idx}>
       {({ open }) => (
@@ -2479,7 +2477,7 @@ const seftiy = {
 </div>
 <div id="المحرك-ناقل-الحركه" >
 
-<div className="space-y-5 mt-6">
+<div className="space-y-4 mt-6">
 {Move.itimis1.map((item, idx) => (
   <Disclosure key={idx} >
     {({ open }) => (
@@ -2718,7 +2716,7 @@ const seftiy = {
 </div>
 </div>
 <div id="نظام-التوجيه">
-<div className="space-y-5 mt-6">
+<div className="space-y-4 mt-6">
 {SteeringSystemData.steeringSystem.map((item, idx) => (
   <Disclosure key={idx} >
     {({ open }) => (
@@ -2866,8 +2864,8 @@ const seftiy = {
 </div>
     </div>
 
-<div id="فحص-الطريق" className="px-3 sm:px-4 md:px-0">
-  <div className="space-y-5 mt-6">
+<div id="فحص-الطريق" >
+  <div className="space-y-4 mt-6">
   {Fixed.itimis4.map((item, idx) => (
     <Disclosure key={idx} >
       {({ open }) => (
@@ -3030,7 +3028,7 @@ const seftiy = {
 </div>
   
   <div id="الأنظمة-الكهربائية-والإلكترونية">
-<div className="space-y-5 mt-6">
+<div className="space-y-4 mt-6">
 {ElectricalSystems.itimis.map((item, idx) => (
   <Disclosure key={idx}>
     {({ open }) => (
@@ -3205,7 +3203,7 @@ const seftiy = {
 </div>
 </div>
 <div id="نظام-التكيف">
-  <div className="space-y-5 mt-6">
+  <div className="space-y-4 mt-6">
   {CoolingSystem.coolingItems.map((item, idx) => (
     <Disclosure key={idx} >
       {({ open }) => (
@@ -3375,7 +3373,7 @@ const src = CoolingSystem.coolingItems[0]?.CoolingData[coolingFilter] ?? [];
 
 
  <div id="االمكابح-السلامه">
-<div className="space-y-5 mt-6">
+<div className="space-y-4 mt-6">
 {seftiy.itimis7.map((item, idx) => (
   <Disclosure key={idx} >
     {({ open }) => (

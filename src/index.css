@@ -48,6 +48,21 @@ body {
   min-height: 95vh;
 }
 
+/* إصلاح موضع الصورة للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .home {
+    background-position: center center;
+    background-size: 120%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    background-position: center center;
+    background-size: 130%;
+  }
+}
+
 
 
 
@@ -219,6 +234,7 @@ body {
 
 /* للأجهزة الأكبر (أجهزة لابتوب وما فوق) */
 @media (min-width: 769px) {
+  
   .say .slick-prev,
   .say .slick-next {
     top: 50% !important; /* في منتصف السلايدر عموديًا */

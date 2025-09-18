@@ -1444,10 +1444,10 @@ function ReportData() {
   }
 
   return (
-    <div className="flex-grow px-4 sm:px-6 lg:px-8">
+    <div className="flex-grow px-4 ">
       <h1 className="text-black dark:text-white text-xl sm:text-2xl font-bold mb-4 sm:mb-6">تقرير فحص السيارة</h1>
       
-      <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-4 mt-6">
         <Disclosure defaultOpen>
           {({ open }) => (
             <>

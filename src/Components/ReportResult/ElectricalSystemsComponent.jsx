@@ -661,7 +661,7 @@ const ElectricalSystemsComponent = () => {
 
   return (
     <div id="المجموعة-الكهربائية">
-      <div className="space-y-4 sm:space-y-5 mt-4 sm:mt-6">
+      <div className="space-y-4 mt-6">
         {electricalData.itemis.map((item, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (

@@ -660,7 +660,7 @@ const AirConditioningComponent = () => {
 
   return (
     <div id="نظام-التكيف" >
-            <div className="space-y-4 sm:space-y-5 mt-4 sm:mt-6">
+      <div className="space-y-4 mt-6">
 
         {acData.itemis.map((item, idx) => (
           <Disclosure key={idx}>
@@ -672,8 +672,8 @@ const AirConditioningComponent = () => {
                     className={`transform transition-transform ${open ? "rotate-180" : ""}`}
                   />
                 </Disclosure.Button>
+                <Disclosure.Panel className="px-4 py-2 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700">
 
-                <Disclosure.Panel className="px-4 py-2 rounded-b-md border border-t-0 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* صورة السيارة */}
                     <div className="flex flex-col items-center justify-center p-4 sm:p-6 shadow rounded-lg">

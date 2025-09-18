@@ -644,7 +644,7 @@ function ChassisOptimized() {
 
   return (
     <div id="الشاصي-والهيكل">
-      <div className="space-y-5 mt-6">
+      <div className="space-y-4 mt-6">
         {chassisData.itimis.map((item, idx) => (
           <Disclosure key={idx}>
             {({ open }) => (

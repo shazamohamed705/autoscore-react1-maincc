@@ -386,7 +386,7 @@ function MoveData() {
 
   return (
     <div id="المحرك-ناقل-الحركه">
-      <div className="space-y-5 mt-6">
+      <div className="space-y-4 mt-6">
         {Move.itimis1.map((item, index) => (
           <Disclosure key={index}>
             {({ open }) => (
